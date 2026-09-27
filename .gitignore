@@ -1,0 +1,34 @@
+# Secrets et configuration locale
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Données de travail, résultats et journaux
+/data/
+/artifacts/
+/logs/
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+# Environnements et caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+node_modules/
+dist/
+build/
+
+# Éditeurs
+.idea/
+.vscode/
+.DS_Store
+*.swp
