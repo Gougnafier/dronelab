@@ -114,9 +114,9 @@ def remote() -> None:
 
 
 def local_stack() -> None:
-    code = ("import mujoco; m = mujoco.MjModel.from_xml_string('<mujoco><worldbody><light pos=\"0 0 2\"/>"
-            "<geom type=\"box\" size=\".1 .1 .1\"/></worldbody></mujoco>'); d = mujoco.MjData(m); "
-            "r = mujoco.Renderer(m, 64, 64); r.update_scene(d); print('rendu', r.render().mean() > 0)")
+    from drone_agent.lift.gl import PROBE
+
+    code = PROBE.replace("RENDER_OK", "rendu")
     from drone_agent.lift.gl import CACHE, render_env
 
     CACHE.unlink(missing_ok=True)

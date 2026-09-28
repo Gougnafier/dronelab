@@ -14,16 +14,19 @@ import time
 from pathlib import Path
 
 CACHE = Path("/tmp/dronelab-gl-backend.json")
-PROBE = ("import mujoco; m = mujoco.MjModel.from_xml_string('<mujoco><worldbody><light pos=\"0 0 2\"/>"
-         "<geom type=\"box\" size=\".1 .1 .1\"/></worldbody></mujoco>'); d = mujoco.MjData(m); "
-         "r = mujoco.Renderer(m, 32, 32); r.update_scene(d); print('RENDER_OK', r.render().mean() > 0)")
+PROBE = ("import mujoco; m = mujoco.MjModel.from_xml_string('<mujoco><worldbody><light pos=\"0 0 3\"/>"
+         "<geom type=\"plane\" size=\"2 2 .1\"/><body pos=\"0 0 1\"><geom type=\"box\" size=\".1 .1 .1\"/></body>"
+         "</worldbody></mujoco>'); d = mujoco.MjData(m); mujoco.mj_forward(m, d); r = mujoco.Renderer(m, 32, 32); "
+         "r.update_scene(d); print('RENDER_OK', r.render().mean() > 0)")
 
 
 def _candidates() -> list[dict]:
     display = os.environ.get("DISPLAY") or ":1"
     xauth = os.environ.get("XAUTHORITY") or f"/run/user/{os.getuid()}/gdm/Xauthority"
-    return [{"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": "0"}, {"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": "1"},
-            {"MUJOCO_GL": "glfw", "DISPLAY": display, "XAUTHORITY": xauth}]
+    # L'affichage (GLFW) d'abord quand il existe : EGL est instable sur cette machine (sonde réussie puis échecs).
+    glfw = {"MUJOCO_GL": "glfw", "DISPLAY": display, "XAUTHORITY": xauth}
+    egl = [{"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": "0"}, {"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": "1"}]
+    return [glfw, *egl] if Path(xauth).exists() else [*egl, glfw]
 
 
 def render_env() -> dict:
