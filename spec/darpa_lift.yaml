@@ -1,0 +1,98 @@
+# Épreuve de référence : DARPA Lift Challenge (relevé du 27/09/2026).
+# Sources : https://www.darpa.mil/research/challenges/lift
+#           https://www.darpa.mil/research/challenges/lift/rules
+# Unités SI sauf mention. Les valeurs « hypothese » sont des lois d'échelle
+# provisoires, à remplacer par la base de composants sourcés.
+
+editions:
+  dlc1:
+    aircraft_mass_max_kg: 24.94     # < 55 lb, énergie comprise, charge exclue
+    payload_min_kg: 49.90           # 110 lb pour un score qualifiant
+    loaded_distance_m: 7408         # 4 nmi
+    unloaded_distance_m: 1852       # 1 nmi
+  dlc2:
+    aircraft_mass_max_kg: 24.95     # <= 55 lb
+    payload_min_kg: 99.79           # 220 lb
+    loaded_distance_m: 14816        # 8 nmi
+    unloaded_distance_m: 3704       # 2 nmi
+
+default_edition: dlc1
+payload_step_kg: 1.134              # 2,5 lb : plus petit disque autorisé
+cruise_altitude_m: 45.72            # 150 ft AGL
+
+environment:
+  air_density_kg_m3: 1.225
+  gravity_m_s2: 9.81
+  headwind_m_s: 0.0                 # l'agent peut ajouter des essais avec vent
+
+mission:
+  takeoff_hover_s: 20
+  climb_rate_m_s: 2.5
+  drop_hover_s: 30
+  descent_rate_m_s: 1.5
+  landing_hover_s: 20
+  energy_reserve_fraction: 0.15     # hypothese
+
+margins:
+  thrust_to_weight_min: 1.6         # autorité de commande à pleine charge, hypothese
+  arm_safety_factor_min: 2.0
+  arm_deflection_max_ratio: 0.01    # flèche en vol stationnaire / longueur libre, hypothese
+  arm_frequency_separation: 0.2     # écart relatif mini de f1 au 1P et au passage de pales
+  tip_mach_max: 0.6               # à poussée max ; fixe le régime de l'hélice
+  rotor_clearance_ratio: 0.05       # jeu entre pales voisines / diamètre
+
+propulsion:                         # hypotheses de modélisation
+  figure_of_merit: 0.70
+  induced_power_factor: 1.15        # kappa
+  motor_efficiency: 0.88
+  esc_efficiency: 0.97
+  coaxial_area_factor: 1.0          # coaxial : surface d'un seul disque par bras (prudent)
+  blades: 2
+  speed_of_sound_m_s: 340
+
+mass_models:                        # hypotheses, à remplacer par la base de composants
+  motor_specific_power_kw_kg: 5.0
+  esc_specific_power_kw_kg: 15.0
+  prop_mass_40in_kg: 0.30
+  prop_mass_exponent: 2.5
+  hub_kg: 1.2
+  hub_per_arm_kg: 0.10
+  hub_radius_m: 0.15
+  landing_gear_kg: 1.0
+  payload_release_kg: 0.4
+  avionics_kg: 0.8
+  wiring_kg_per_kw: 0.02
+  body_cda_m2: 0.10
+  payload_cda_m2: 0.06
+
+batteries:                          # valeurs pack, hypotheses à sourcer
+  lipo:
+    specific_energy_wh_kg: 160
+    max_continuous_c: 20
+  li_ion_high_power:
+    specific_energy_wh_kg: 200
+    max_continuous_c: 8
+  li_ion_high_energy:
+    specific_energy_wh_kg: 240
+    max_continuous_c: 3
+  semi_solid:
+    specific_energy_wh_kg: 290
+    max_continuous_c: 5
+  usable_fraction: 0.85
+
+arm_material:                       # tube carbone roulé, quasi-isotrope, hypothese
+  name: CFRP
+  density_kg_m3: 1550
+  young_gpa: 70
+  strength_mpa: 400
+
+parameters:
+  n_arms: [4, 6, 8]
+  coaxial: [false, true]
+  prop_diameter_in: [20, 62]
+  motor_power_kw: [0.5, 20]         # puissance max continue par moteur
+  battery_kg: [1.0, 18.0]
+  battery: [lipo, li_ion_high_power, li_ion_high_energy, semi_solid]
+  cruise_speed_m_s: [5.0, 25.0]
+  arm_od_mm: [16.0, 60.0]
+  arm_wall_mm: [0.8, 4.0]

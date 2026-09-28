@@ -1,0 +1,37 @@
+<mujoco model="fixture_quad">
+  <!-- Drone de test du simulateur ; fixture des tests, jamais fourni à l'agent. Conforme à l'épreuve v2. -->
+  <worldbody>
+    <body name="drone" pos="0 0 1">
+      <freejoint/>
+      <geom name="hub" type="cylinder" size="0.2 0.05" mass="4" rgba=".2 .2 .25 1"/>
+      <geom name="battery" type="box" size="0.15 0.1 0.05" pos="0 0 0.1" mass="6" rgba=".95 .75 .1 1"/>
+      <geom name="avionics" type="box" size="0.06 0.06 0.02" pos="0 0 0.17" mass="0.45" rgba=".2 .6 .2 1"/>
+      <geom name="wiring" type="box" size="0.1 0.1 0.005" pos="0 0 -0.06" mass="0.35" rgba=".5 .3 .1 1"/>
+      <geom name="arm_0" type="capsule" fromto="0 0 0 0.6364 0.6364 0" size="0.02" mass="0.6" rgba=".1 .1 .1 1"/>
+      <geom name="motor_0" type="cylinder" pos="0.6364 0.6364 0.05" size="0.05 0.03" mass="1.0" rgba=".8 .2 .1 1"/>
+      <geom name="esc_0" type="box" pos="0.3182 0.3182 -0.03" size="0.04 0.03 0.01" mass="0.25" rgba=".2 .4 .8 1"/>
+      <geom name="prop_0" type="cylinder" pos="0.6364 0.6364 0.1" size="0.5 0.003" mass="0.26" contype="0" conaffinity="0" rgba=".9 .9 .9 .3"/>
+      <site name="rotor_0" pos="0.6364 0.6364 0.1"/>
+      <geom name="leg_0" type="capsule" fromto="0.1768 0.1768 0 0.2121 0.2121 -0.6" size="0.015" mass="0.3" rgba=".3 .3 .3 1"/>
+      <geom name="arm_1" type="capsule" fromto="0 0 0 -0.6364 0.6364 0" size="0.02" mass="0.6" rgba=".1 .1 .1 1"/>
+      <geom name="motor_1" type="cylinder" pos="-0.6364 0.6364 0.05" size="0.05 0.03" mass="1.0" rgba=".8 .2 .1 1"/>
+      <geom name="esc_1" type="box" pos="-0.3182 0.3182 -0.03" size="0.04 0.03 0.01" mass="0.25" rgba=".2 .4 .8 1"/>
+      <geom name="prop_1" type="cylinder" pos="-0.6364 0.6364 0.1" size="0.5 0.003" mass="0.26" contype="0" conaffinity="0" rgba=".9 .9 .9 .3"/>
+      <site name="rotor_1" pos="-0.6364 0.6364 0.1"/>
+      <geom name="leg_1" type="capsule" fromto="-0.1768 0.1768 0 -0.2121 0.2121 -0.6" size="0.015" mass="0.3" rgba=".3 .3 .3 1"/>
+      <geom name="arm_2" type="capsule" fromto="0 0 0 -0.6364 -0.6364 0" size="0.02" mass="0.6" rgba=".1 .1 .1 1"/>
+      <geom name="motor_2" type="cylinder" pos="-0.6364 -0.6364 0.05" size="0.05 0.03" mass="1.0" rgba=".8 .2 .1 1"/>
+      <geom name="esc_2" type="box" pos="-0.3182 -0.3182 -0.03" size="0.04 0.03 0.01" mass="0.25" rgba=".2 .4 .8 1"/>
+      <geom name="prop_2" type="cylinder" pos="-0.6364 -0.6364 0.1" size="0.5 0.003" mass="0.26" contype="0" conaffinity="0" rgba=".9 .9 .9 .3"/>
+      <site name="rotor_2" pos="-0.6364 -0.6364 0.1"/>
+      <geom name="leg_2" type="capsule" fromto="-0.1768 -0.1768 0 -0.2121 -0.2121 -0.6" size="0.015" mass="0.3" rgba=".3 .3 .3 1"/>
+      <geom name="arm_3" type="capsule" fromto="0 0 0 0.6364 -0.6364 0" size="0.02" mass="0.6" rgba=".1 .1 .1 1"/>
+      <geom name="motor_3" type="cylinder" pos="0.6364 -0.6364 0.05" size="0.05 0.03" mass="1.0" rgba=".8 .2 .1 1"/>
+      <geom name="esc_3" type="box" pos="0.3182 -0.3182 -0.03" size="0.04 0.03 0.01" mass="0.25" rgba=".2 .4 .8 1"/>
+      <geom name="prop_3" type="cylinder" pos="0.6364 -0.6364 0.1" size="0.5 0.003" mass="0.26" contype="0" conaffinity="0" rgba=".9 .9 .9 .3"/>
+      <site name="rotor_3" pos="0.6364 -0.6364 0.1"/>
+      <geom name="leg_3" type="capsule" fromto="0.1768 -0.1768 0 0.2121 -0.2121 -0.6" size="0.015" mass="0.3" rgba=".3 .3 .3 1"/>
+      <site name="payload_attach" pos="0 0 -0.1"/>
+    </body>
+  </worldbody>
+</mujoco>

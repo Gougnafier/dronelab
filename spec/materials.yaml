@@ -1,0 +1,58 @@
+# Matériaux et procédés de l'atelier de pièces sur mesure (épreuve v3).
+# Valeurs indicatives de fiches techniques usuelles, prudentes ; à affiner par des sources précises.
+# Unités : kg/m3, GPa, MPa, W/(m·K), °C.
+
+materials:
+  PETG:
+    density_kg_m3: 1270
+    young_gpa: 2.0
+    strength_mpa: 45          # traction, pièce massive
+    thermal_conductivity: 0.20
+    max_service_temp_c: 70
+    processes: [fdm]
+  PLA-CF:
+    density_kg_m3: 1290
+    young_gpa: 4.5
+    strength_mpa: 45
+    thermal_conductivity: 0.25
+    max_service_temp_c: 55
+    processes: [fdm]
+  PA12-CF:                    # nylon chargé carbone
+    density_kg_m3: 1150
+    young_gpa: 5.0
+    strength_mpa: 60
+    thermal_conductivity: 0.35
+    max_service_temp_c: 120
+    processes: [fdm]
+  AL6061-T6:
+    density_kg_m3: 2700
+    young_gpa: 68.9
+    strength_mpa: 276         # limite d'élasticité
+    thermal_conductivity: 167
+    max_service_temp_c: 150
+    processes: [cnc]
+  AL7075-T6:
+    density_kg_m3: 2810
+    young_gpa: 71.7
+    strength_mpa: 503
+    thermal_conductivity: 130
+    max_service_temp_c: 120
+    processes: [cnc]
+
+processes:
+  fdm:
+    description: impression 3D par dépôt de fil
+    build_volume_mm: [250, 250, 250]
+    min_wall_mm: 1.2
+    strength_knockdown: 0.6   # anisotropie entre couches : résistance utile = 60 % de la valeur massive
+  cnc:
+    description: usinage 3 axes d'aluminium
+    build_volume_mm: [400, 300, 150]
+    min_wall_mm: 1.5
+    strength_knockdown: 1.0
+
+design_rules:
+  safety_factor_min: 1.5      # sur la résistance utile (après abattement du procédé)
+  motor_loss_fraction: 0.12   # part de la puissance moteur dissipée en chaleur, pour l'estimation thermique
+  film_coefficient_w_m2k: 40  # convection sous le flux d'hélice, estimation prudente
+  ambient_c: 30

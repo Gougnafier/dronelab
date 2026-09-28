@@ -1,0 +1,24 @@
+# Environnement de calcul (conda-forge). CalculiX n'existe pas sur PyPI.
+#   conda env create -f environment.yml        (ou micromamba create -p ./env -f environment.yml)
+name: drone-agent
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - calculix=2.23
+  - gmsh=4.15
+  - python-gmsh=4.15
+  - numpy
+  - scipy
+  - pyyaml
+  - pytest
+  - matplotlib
+  - pip
+  - pip:
+      - mcp==2.2.0   # SDK MCP officiel, licence MIT
+      - mujoco==3.14.0          # Apache-2.0
+      - imageio                 # BSD-2-Clause
+      - imageio-ffmpeg          # BSD-2-Clause
+      - yt-dlp                  # Unlicense : recherche et audio YouTube
+      - youtube-transcript-api  # MIT : sous-titres
+      - faster-whisper          # MIT : transcription locale

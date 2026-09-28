@@ -32,3 +32,6 @@ build/
 .vscode/
 .DS_Store
 *.swp
+
+# Résultats de l’agent (designs, maillages, journaux) : volumineux, hors Git
+/runs/

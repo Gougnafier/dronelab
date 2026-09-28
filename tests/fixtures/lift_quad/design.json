@@ -1,0 +1,46 @@
+{
+  "name": "fixture_quad",
+  "rotors": [
+    {
+      "site": "rotor_0",
+      "spin": 1,
+      "prop_diameter_m": 1.0,
+      "motor_max_power_w": 4000
+    },
+    {
+      "site": "rotor_1",
+      "spin": -1,
+      "prop_diameter_m": 1.0,
+      "motor_max_power_w": 4000
+    },
+    {
+      "site": "rotor_2",
+      "spin": 1,
+      "prop_diameter_m": 1.0,
+      "motor_max_power_w": 4000
+    },
+    {
+      "site": "rotor_3",
+      "spin": -1,
+      "prop_diameter_m": 1.0,
+      "motor_max_power_w": 4000
+    }
+  ],
+  "battery": {
+    "energy_wh": 1150,
+    "max_power_w": 23000,
+    "mass_kg": 6.0
+  },
+  "cruise_speed_m_s": 12,
+  "structure": {
+    "arm_tube_od_m": 0.04,
+    "arm_tube_wall_m": 0.002,
+    "hub_radius_m": 0.2
+  },
+  "components": [
+    {
+      "name": "fixture",
+      "note": "drone de test, pas une conception"
+    }
+  ]
+}

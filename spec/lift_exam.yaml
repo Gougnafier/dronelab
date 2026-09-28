@@ -1,0 +1,90 @@
+# Épreuve simulée « DARPA Lift » : ce que le simulateur impose, indépendamment de l'agent.
+# Règles : https://www.darpa.mil/research/challenges/lift/rules (relevé du 27/09/2026).
+# L'agent conçoit le drone ; il ne peut modifier ni ce fichier ni le simulateur.
+# Version 2 (28/09/2026) : règles ajoutées après l'audit docs/validation/audit-agent-2026-09-28.md
+# (hélices qui se chevauchaient, masses réglées sur les plafonds, marge de poussée nulle, structure non vérifiée).
+
+version: 3
+# Version 3 (28/09/2026) : dossiers issus du compilateur d'assemblage uniquement (masses calculées à partir du
+# catalogue sourcé et des pièces CAO), recouvrement d'hélices décalées en hauteur permis avec pénalité.
+
+rules:
+  aircraft_mass_max_kg: 24.94        # < 55 lb, énergie comprise, charge exclue
+  payload_min_kg: 49.90              # 110 lb pour un score qualifiant
+  payload_step_lb: 2.5               # plus petit disque
+  loaded_distance_m: 7408            # 4 nmi
+  unloaded_distance_m: 1852          # 1 nmi
+  cruise_altitude_m: 45.72           # 150 ft
+
+mission:
+  settle_s: 1.0
+  climb_rate_m_s: 2.5
+  descent_rate_m_s: 1.5
+  hover_before_drop_s: 5
+  hover_after_drop_s: 5
+  cruise_accel_m_s2: 1.0
+  default_cruise_speed_m_s: 12.0
+  max_cruise_speed_m_s: 30.0
+
+physics:                              # hypothèses fixées par l'épreuve
+  timestep_s: 0.002
+  control_hz: 100
+  air_density_kg_m3: 1.225
+  gravity_m_s2: 9.81
+  figure_of_merit: 0.70
+  induced_power_factor: 1.15
+  powertrain_efficiency: 0.85         # moteur + variateur
+  torque_to_thrust_per_m: 0.02        # couple de réaction = coef × diamètre × poussée
+  body_drag_coefficient: 0.8          # sur l'aire frontale de la boîte englobante (hors hélices)
+  payload_cda_m2: 0.06
+  battery_usable_fraction: 0.90
+
+plausibility:                          # garde-fous sur les déclarations de l'agent
+  motor_specific_power_max_w_kg: 5000
+  battery_tiers:                       # énergie massique du pack -> décharge continue max (ordres de grandeur prudents)
+    - {max_wh_kg: 200, max_c: 25}      # LiPo de puissance
+    - {max_wh_kg: 260, max_c: 6}       # Li-ion haute énergie
+  near_limit_fraction: 0.02            # déclaration à moins de 2 % d'un plafond : signalée au vérificateur
+  rotor_overlap_tolerance: 0.02        # jeu minimal entre disques d'hélice voisins, en fraction du diamètre
+  overlap_min_vertical_fraction: 0.10  # recouvrement permis si l'écart vertical ≥ 10 % du plus petit diamètre
+  overlap_power_penalty: 0.20          # +20 % de puissance par fraction de disque recouverte (coaxial complet : +20 %)
+  require_compiled: true               # seuls les dossiers produits par assembly_compile sont acceptés
+  thrust_to_weight_min: 1.6            # poussée statique max / poids chargé, pour garder l'autorité de pilotage
+
+mass_floors:                           # masses minimales par famille de pièces (préfixe du nom de geom)
+  esc_kg_per_kw: 0.06                  # variateurs : par kW de moteur
+  prop_kg_at_1m: 0.25                  # hélice : 0,25 kg × (diamètre / 1 m)^2,5 par hélice
+  prop_exponent: 2.5
+  wiring_kg_per_kw: 0.02               # câbles de puissance, connecteurs, carte de distribution
+  avionics_kg: 0.4                     # contrôleur de vol, GNSS, radio, capteurs, coupe-circuit
+  gear_fraction: 0.04                  # train d'atterrissage : fraction de la masse de l'aéronef
+  frame_fraction: 0.04                 # moyeu et plaques (geoms hub*, frame*, plate*) : fraction de la masse de l'aéronef
+
+structure:                             # bras en tube composite, encastrés au moyeu
+  density_kg_m3: 1550
+  strength_mpa: 400
+  safety_factor: 1.5
+
+scenarios:                             # bancs d'essai ; seul « nominal » compte pour le score
+  nominal: {description: "parcours DARPA Lift, air calme, 25 °C"}
+  vent: {description: "vent traversier constant de 8 m/s (29 km/h)", wind_m_s: [0, 8, 0]}
+  rafales: {description: "vent de face de 4 m/s et rafales de 5 m/s", wind_m_s: [-4, 0, 0], gust_m_s: 5, gust_period_s: 3}
+  chaleur: {description: "journée chaude : 38 °C, air moins dense, moteurs plus chauds", air_density_kg_m3: 1.13, ambient_c: 38}
+  altitude: {description: "terrain à 1 500 m d'altitude", air_density_kg_m3: 1.06, ambient_c: 15}
+
+motor_thermal:                         # échauffement des moteurs pendant le vol (modèle à une constante de temps)
+  loss_fraction: 0.12                  # part de la puissance électrique dissipée dans le moteur
+  rated_rise_k: 80                     # échauffement en régime permanent à la puissance continue nominale
+  heat_capacity_j_kgk: 500             # capacité thermique par kg de moteur
+  max_winding_c: 150                   # au-delà : surchauffe, échec
+  ambient_c: 25
+
+failure:
+  crash_tilt_deg: 70
+  max_tracking_error_m: 25
+  climb_timeout_factor: 3.0
+  min_flight_altitude_m: 0.5
+
+telemetry:
+  log_hz: 10
+  trajectory_hz: 5

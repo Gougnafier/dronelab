@@ -1,0 +1,101 @@
+# Cahier des charges machine du bras de quadricoptère.
+# Source : docs/cahier-des-charges.md. Les valeurs marquées « à confirmer »
+# sont des hypothèses de départ, à ajuster sur le drone réel.
+# Unités : mm, N, g, MPa, Hz.
+
+drone:
+  type: quadricoptere_7_pouces
+  takeoff_mass_max_g: 1200
+  thrust_max_per_motor_n: 15.0
+  motor_mass_g: 60            # moteur 28xx + hélice, à confirmer
+  motor_torque_max_nm: 0.5    # couple de réaction crête, à confirmer
+
+manufacturing:
+  process: FDM
+  bed_mm: [220, 220]
+  max_height_mm: 200
+  min_wall_mm: 1.2
+  pad_min_thickness_mm: 2.5   # assise des vis M3 moteur, hypothèse
+  infill: solid               # masse calculée pour une pièce pleine, hypothèse
+
+materials:
+  # Valeurs indicatives de pièces imprimées (plan XY), isotropes et prudentes.
+  # À remplacer par la fiche du filament utilisé.
+  PETG:
+    density_g_cm3: 1.27
+    young_mpa: 2000
+    poisson: 0.38
+    strength_mpa: 40
+  PLA-CF:
+    density_g_cm3: 1.29
+    young_mpa: 4500
+    poisson: 0.35
+    strength_mpa: 45
+
+interfaces:           # figées : l'agent ne peut pas les modifier
+  motor_pattern_mm: 16.0
+  motor_screw_hole_mm: 3.2
+  motor_shaft_hole_mm: 8.0
+  motor_pad_diameter_mm: 30.0
+  motor_footprint_diameter_mm: 28.0  # zone rigide de la cloche moteur
+  root_length_mm: 25.0               # zone encastrée entre les plaques
+  root_screw_hole_mm: 3.2
+  root_screw_x_mm: [8.0, 18.0]
+  arm_free_length_mm: 110.0          # de la sortie d'encastrement à l'axe moteur, à confirmer
+
+constraints:
+  safety_factor_min: 2.0
+  tip_deflection_max_mm: 1.0         # sous poussée max
+  first_frequency_min_hz: 100.0      # seuil à fixer, voir docs
+
+load_cases:
+  max_thrust:
+    description: Poussée max verticale au moteur, bras encastré.
+    force_n: [0.0, 0.0, 15.0]
+  motor_torque:
+    description: Couple de réaction du moteur autour de son axe.
+    moment_nm: [0.0, 0.0, 0.5]
+  maneuver:
+    description: Facteur de charge vertical sur le bras et la masse moteur.
+    load_factor: 8.0
+  crash:
+    description: Impact latéral en bout de bras, statique équivalente.
+    force_n: [0.0, 40.0, -20.0]      # à confirmer
+  modal:
+    description: Trois premières fréquences propres, masse moteur incluse.
+    modes: 3
+
+stress_exclusion_band_mm: 3.0        # singularité d'encastrement exclue du maximum
+
+# Bornes des paramètres modifiables par l'agent.
+parameters:
+  thickness_mm: [1.2, 10.0]    # épaisseur de l'âme
+  width_mm: [12.0, 30.0]       # largeur à l'encastrement
+  taper: [0.5, 1.0]            # largeur en bout / largeur à l'encastrement
+  holes: [0, 6]                # nombre d'évidements dans l'âme
+  hole_ratio: [0.2, 0.8]       # diamètre d'évidement / largeur utile locale
+  rib: [false, true]           # nervures de bord (section en U)
+  rib_height_mm: [1.0, 16.0]   # hauteur au-dessus de l'âme
+  rib_width_mm: [1.2, 4.0]
+  material: [PETG, PLA-CF]
+
+# Bras de référence pour le score (score = masse_ref / masse).
+# Provisoire : à remplacer par le bras réel du drone.
+reference:
+  part: arm
+  params:
+    thickness_mm: 5.0
+    width_mm: 24.0
+    taper: 1.0
+    holes: 0
+    hole_ratio: 0.5
+    rib: true
+    rib_height_mm: 10.0
+    rib_width_mm: 3.0
+    material: PETG
+
+solver:
+  timeout_s: 300
+  threads: 4
+  mesh_size_max_mm: 3.0
+  mesh_order: 2

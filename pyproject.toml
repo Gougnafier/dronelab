@@ -1,0 +1,10 @@
+[project]
+name = "drone-agent"
+version = "0.1.0"
+description = "Agent ingénieur drone : allègement d'un châssis imprimable, outils testables sans LLM"
+requires-python = ">=3.11"
+dependencies = ["numpy", "scipy", "pyyaml", "gmsh"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
