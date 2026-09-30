@@ -1,7 +1,8 @@
 [project]
 name = "drone-agent"
+license = "MIT"
 version = "0.1.0"
-description = "Agent ingénieur drone : allègement d'un châssis imprimable, outils testables sans LLM"
+description = "Ingénieur produit autonome : laboratoire, épreuve simulée DARPA Lift et agents Hermes qui se contrôlent"
 requires-python = ">=3.11"
 dependencies = ["numpy", "scipy", "pyyaml", "gmsh"]
 

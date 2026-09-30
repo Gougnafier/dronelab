@@ -203,6 +203,8 @@ Je suivais le travail en direct sur mon téléphone. Ces messages sont écrits p
 - [Architecture détaillée](docs/architecture.md), [décisions](docs/decisions.md), [audits](docs/validation/).
 - Les schémas sont rendus en noir sur fond blanc à partir de leurs sources Mermaid (`docs/diagrams/`).
 
+Le code et la documentation de ce dépôt sont sous [licence MIT](LICENSE).
+
 Logiciels tiers :
 
 - [Hermes Agent](https://github.com/NousResearch/hermes-agent) (MIT)
