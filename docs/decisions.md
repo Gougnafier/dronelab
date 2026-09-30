@@ -119,7 +119,7 @@
 
 ## 28 septembre 2026 (soir) — Modèles : OpenAI pour l’ingénieur, NVIDIA pour le vérificateur
 
-**Constat :** avec les modèles de build.nvidia.com (quota gratuit partagé par l’ingénieur et le vérificateur), la majorité des cycles échouaient sur des refus HTTP 429. Le porteur pensait Hermes connecté à OpenAI : c’est le cas pour son profil par défaut (`gpt-5.6-sol`, compte ChatGPT, fournisseur `openai-codex`), pas pour les profils du projet, qui avaient été volontairement mis sur NVIDIA.
+**Constat :** avec les modèles de build.nvidia.com (quota gratuit partagé par l’ingénieur et le vérificateur), la majorité des cycles échouaient sur des refus HTTP 429. Le porteur pensait Hermes connecté à OpenAI : c’est le cas pour son profil Hermes personnel, pas pour les profils du projet, qui avaient été volontairement mis sur NVIDIA.
 
 **Décision :**
 
@@ -153,7 +153,7 @@
 
 ## 30 septembre 2026 (soir) — Nettoyage du dépôt avant publication
 
-- **Présentation sans noms de modèles.** Le README, les diapositives et la description du formulaire ne citent plus les modèles utilisés. La cible du projet est un modèle plus petit, exécuté en local ; aucun texte ne prétend pour autant que la course a tourné en local. Les décisions historiques gardent leurs faits.
+- **Présentation sans noms de modèles.** Le README et la description du formulaire ne citent plus les modèles utilisés. La cible du projet est un modèle plus petit, exécuté en local ; aucun texte ne prétend pour autant que la course a tourné en local. Les décisions historiques gardent leurs faits.
 - **Qui a fait quoi, mis en avant.** Nous avons configuré Hermes (profils, règles, boucle Python, outils scientifiques, épreuve, Discord). Les agents ont fait toute l'ingénierie du drone.
 - **Traces de la course publiées** dans `course/` (11 Mo) par `scripts/export_run.py`. Chemins de la machine retirés, journal des appels allégé, journaux bruts des modèles, maillages et vidéos exclus.
 - **Archivés hors du dépôt** (`data/local/archives/`, ignoré) : brainstorming, cahier des charges initial (bras 7 pouces), cadre du challenge, méthode de travail (reprise dans `AGENTS.md`), comptes rendus K02 et K04, contrôle v2 des anciens designs, échange Discord privé, scripts du plan B (`evaluate.py`, `random_designs.py`) et `use_openai.sh`. Les documents de travail pour la vidéo et le formulaire sont dans `data/local/demo/`.

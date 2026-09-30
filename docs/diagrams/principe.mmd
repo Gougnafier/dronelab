@@ -1,11 +1,11 @@
 flowchart TB
-    NOUS(["Nous"])
-    NOUS -->|"configurons 4 profils<br/>qui se critiquent"| HERMES["Hermes Agent<br/>harnais : boucle, outils de base,<br/>compétences, mémoire, Discord"]
-    NOUS -->|"ajoutons"| SCI["Outils scientifiques<br/>MuJoCo, éléments finis, CAO,<br/>catalogue vérifié, YouTube"]
+    NOUS(["Moi"])
+    NOUS -->|"je configure 4 profils<br/>qui se critiquent"| HERMES["Hermes Agent<br/>harnais : boucle, outils de base,<br/>compétences, mémoire, Discord"]
+    NOUS -->|"j'ajoute"| SCI["Outils scientifiques<br/>MuJoCo, éléments finis, CAO,<br/>catalogue vérifié, YouTube"]
     HERMES --> AG["Les agents"]
     SCI --> AG
     AG -->|"conçoivent et testent,<br/>avec leurs propres essais"| PROD["Le drone"]
     PROD -->|"vole dans"| EXAM["Épreuve officielle, figée<br/>parcours DARPA Lift simulé"]
-    NOUS -->|"écrivons"| EXAM
+    NOUS -->|"j'écris"| EXAM
     EXAM -.->|"verdict, télémétrie, vidéo"| AG
     AG -.->|"signalent ses défauts"| NOUS

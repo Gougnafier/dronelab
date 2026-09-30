@@ -1,6 +1,6 @@
 # Audit du travail de l’agent — épreuve v3 et atelier (nuit du 28 au 29 septembre 2026)
 
-Période : cycles 74 à 109 (28 septembre 18 h 30 → 29 septembre matin), après le passage sur DeepSeek et l’ouverture de l’atelier. Arrêt manuel par le porteur le 29 septembre à 8 h 39 : budget de tokens presque épuisé, et record plafonné depuis le cycle 104, limité par l’énergie de la batterie.
+Période : cycles 74 à 109 (28 septembre 18 h 30 → 29 septembre matin), après le passage sur DeepSeek et l’ouverture de l’atelier. Arrêt manuel par le porteur le 29 septembre à 8 h 39 : preuve de concept jugée atteinte et matière suffisante pour la démonstration. La course tournait débridée (aucun quota de cycles, pause de 5 s), ce qui consommait vite le budget de tokens.
 Sources : `runs/lift_challenge/` (cahier, audits, limites signalées, notes de terrain, catalogue, pièces, assemblages, épreuves), compétences du dépôt.
 
 ## Verdict
@@ -85,7 +85,7 @@ La course propre prévue par `scripts/start_clean_run.sh` n'a pas été lancée.
 
 Le record remonte ensuite à 2,304 sur `a2l`. Le graphique « Progression » du tableau de bord marque ces corrections par des barres verticales (`docs/demo/corrections-lift_challenge.json`). Le superviseur devrait lui-même savoir invalider un record ; c'est à prévoir avant toute nouvelle course.
 
-**Catalogue.** Il compte 17 entrées pour 14 pièces distinctes :
+**Catalogue.** Il compte 17 entrées pour 14 identifiants : 11 produits du commerce, une variante du MN1118 créée pour l'épreuve (« continu 80 % ») et 2 tables de référence. Détail :
 
 - T-Motor : 2 moteurs, 1 hélice, 1 variateur ;
 - Tattu : 1 batterie ;
