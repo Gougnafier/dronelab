@@ -1,0 +1,17 @@
+{
+  "_comment": "Annotations de l'équipe pour le graphique de progression du tableau de bord (scripts/dashboard.py --annotations). Chaque entrée renvoie à sa preuve dans runs/lift_challenge (inbox.jsonl, notebook.jsonl, results.jsonl, exam_limitations.jsonl). Le travail décrit est celui des agents ; ces annotations ne font que le situer.",
+  "before": {
+    "label": "Épreuve v1 : record 6,73 invalidé par l'audit du 28/09 (hélices qui se chevauchent, masses calées sur les plafonds, pas de train ni de variateurs)",
+    "source": "docs/validation/audit-agent-2026-09-28.md, inbox msg-0003"
+  },
+  "corrections": [
+    {"cycle": 74, "kind": "équipe", "label": "Épreuve v3 + atelier : catalogue et pièces repartent de zéro", "source": "inbox msg-0007"},
+    {"cycle": 79.5, "kind": "limite", "label": "Bug de l'épreuve signalé par l'agent (lim-001), corrigé", "source": "exam_limitations lim-001, inbox msg-0016"},
+    {"cycle": 87, "kind": "réalisme", "label": "Crochet et élingue ajoutés (éclaireur)", "source": "inbox msg-0026 ; exam-0162, 2,315 → 2,305"},
+    {"cycle": 95, "kind": "réalisme", "label": "Joint bras-moyeu fermé, vrai largueur (éclaireur)", "source": "inbox msg-0038, msg-0039 ; exam-0177, 2,416 → 2,257"},
+    {"cycle": 96, "kind": "réalisme", "label": "Train d'atterrissage allongé (éclaireur)", "source": "inbox msg-0035 ; exam-0179, 2,224"},
+    {"cycle": 97, "kind": "audit", "label": "Tubes mieux engagés dans les supports, fixations (vérificateur)", "source": "audits cycle 95 ; exam-0181, 2,215"},
+    {"cycle": 98, "kind": "réalisme", "label": "Masses oubliées ajoutées : visserie, servo, câbles (éclaireur)", "source": "inbox msg-0042 ; exam-0183, 2,212"},
+    {"cycle": 106.5, "kind": "réalisme", "label": "Record non robuste : échoue en chaleur et en altitude", "source": "notebook cycles 106-107 ; exam-0189 à 0194"}
+  ]
+}

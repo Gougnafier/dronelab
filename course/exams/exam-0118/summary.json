@@ -1,0 +1,111 @@
+{
+  "exam_id": "exam-0118",
+  "design": "v3_hexa50_5.5kW_ultralight",
+  "design_id": "v3_hexa50_5.5kW_ultralight-d75caafc",
+  "cycle": 43,
+  "hypothesis": "v3_hexa50_5.5kW_ultralight à 164.5 kg (+2.5 lb au-dessus de 162.16 kg) : test si la surface disque 50\\\" permet d'absorber l'incrément de charge supplémentaire. À 162.16 kg, throttle était 100% en croisière avec tracking 1.63m. On teste si la marge tracking tient.",
+  "ok": true,
+  "passed": false,
+  "failure": {
+    "reason": "écart de trajectoire (poussée ou puissance insuffisante)",
+    "t": 56.9,
+    "phase": "cruise_loaded",
+    "context": {
+      "battery_pct": 89.7,
+      "power_w": 22365.2,
+      "battery_power_limited": false,
+      "throttle_max": 1.0,
+      "altitude_m": 45.59,
+      "tilt_deg": 4.6,
+      "tracking_error_m": 25.0
+    }
+  },
+  "score": -0.9281,
+  "aircraft_mass_kg": 24.916,
+  "payload_kg": 164.427,
+  "payload_lb": 362.5,
+  "ratio": 6.599,
+  "rules": {
+    "aircraft_mass_ok": true,
+    "payload_qualifying": true
+  },
+  "cruise_speed_m_s": 15.0,
+  "mission_time_s": 59.9,
+  "planned_time_s": 712.1,
+  "energy_used_wh": 432.9,
+  "battery_usable_wh": 3626.1,
+  "battery_min_pct": 89.3,
+  "max_tilt_deg": 11.3,
+  "max_tracking_error_m": 27.61,
+  "phases": {
+    "settle": {
+      "t_start": 0.0,
+      "energy_wh": 0.0,
+      "max_throttle": 0.0,
+      "max_tracking_error_m": 0.1,
+      "t_end": 1.0,
+      "mean_power_w": 0.0
+    },
+    "climb": {
+      "t_start": 1.0,
+      "energy_wh": 160.1,
+      "max_throttle": 1.0,
+      "max_tracking_error_m": 8.47,
+      "t_end": 19.3,
+      "mean_power_w": 31512.6
+    },
+    "cruise_loaded": {
+      "t_start": 19.3,
+      "energy_wh": 272.76,
+      "max_throttle": 1.0,
+      "max_tracking_error_m": 27.61,
+      "t_end": 59.9,
+      "mean_power_w": 24173.7
+    }
+  },
+  "check": {
+    "ok": true,
+    "issues": [],
+    "warnings": [],
+    "aircraft_mass_kg": 24.916,
+    "rotors": [
+      {
+        "site": "rotor_0",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      },
+      {
+        "site": "rotor_1",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      },
+      {
+        "site": "rotor_2",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      },
+      {
+        "site": "rotor_3",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      },
+      {
+        "site": "rotor_4",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      },
+      {
+        "site": "rotor_5",
+        "diameter_m": 1.27,
+        "max_thrust_n": 321.5
+      }
+    ],
+    "max_static_thrust_n": 1929.0,
+    "thrust_to_weight_empty": 7.89,
+    "motor_mass_kg": 6.6,
+    "battery_geom_mass_kg": 13.43
+  },
+  "frontal_area_m2": 1.333,
+  "span_m": 1.91,
+  "ran_on": "rtx5090"
+}

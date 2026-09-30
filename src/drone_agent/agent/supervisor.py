@@ -57,6 +57,7 @@ class Config:
     scout_skills: tuple[str, ...] = ("field-research", "reality-review", "component-research", "lift-exam")
     scout_every: int = 3                # une session d'éclaireur tous les N cycles réussis
     scout_timeout_s: int = 2400
+    await_mission: bool = False         # course propre : attendre la mission envoyée par l'utilisateur (Discord)
     audit_timeout_s: int = 1200
     rate_limit_backoff_s: int = 60       # délai initial après un refus HTTP 429, doublé à chaque refus
     rate_limit_backoff_max_s: int = 600
@@ -117,6 +118,8 @@ def build_prompt(ws: Workspace, config: Config, retrospective: bool, summary_due
     parts = [
         f"Tu es l'ingénieur produit autonome du projet « {product.title} ». Cycle {state['cycle']}.",
         f"Objectif : {product.goal}",
+        *([f"Mission confiée par l'utilisateur (Discord, {state['mission']['at'][:16].replace('T', ' ')}) : "
+           f"{state['mission']['text']}"] if state.get("mission") else []),
         f"Score : {product.score}.",
         "",
         "Règles de travail (non négociables) :",
@@ -456,9 +459,26 @@ class Supervisor:
         self.ws.save_state(state)
         return {"slot": slot, "by_agent": not fallback}
 
+    def wait_for_mission(self) -> None:
+        """Course propre : ne démarre qu'à réception de la mission (premier message de l'utilisateur)."""
+        notify.send(self.ws.root, "waiting", "🛰️ Laboratoire prêt, espace de travail vide. En attente de la mission "
+                                             "(écrivez-la dans ce salon).")
+        while not self.stop_requested():
+            message = next((m for m in self.ws.inbox() if m.get("author") == "user"), None)
+            if message:
+                state = self.ws.state()
+                state["mission"] = {"id": message["id"], "text": message["text"], "at": message["timestamp"]}
+                self.ws.save_state(state)
+                self.ws.acknowledge(message["id"], "mission enregistrée : l'ingénieur démarre")
+                notify.send(self.ws.root, "mission", f"🚀 Mission reçue. L'ingénieur démarre de zéro.\n« {message['text'][:600]} »")
+                return
+            self.sleep(20)
+
     def run(self) -> None:
         cfg = self.config
         done = 0
+        if cfg.await_mission and not self.ws.state().get("mission"):
+            self.wait_for_mission()
         if cfg.report_now:
             self.send_report(f"{now_iso()[:16].replace('T', ' ')} (demande)")
         while not self.stop_requested() and (cfg.max_cycles is None or done < cfg.max_cycles):

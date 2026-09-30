@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "part": "release_hook",
+  "hash": "d0f89099f2",
+  "material": "AL7075-T6",
+  "process": "cnc",
+  "role": "other",
+  "size_mm": [
+    60.0,
+    60.0,
+    68.0
+  ],
+  "volume_cm3": 51.53,
+  "com_mm": [
+    0,
+    0,
+    0
+  ],
+  "mass_kg": 0.1448,
+  "issues": [],
+  "fem_required": [
+    "charge_axiale",
+    "charge_laterale",
+    "choc"
+  ],
+  "fem_done": {},
+  "image": "runs/lift_challenge/workspace/parts/release_hook/view.png",
+  "solids": 2,
+  "volume_mm3": 51526.50179939087,
+  "area_mm2": 15237.660178657212,
+  "inertia_mm5": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "bbox_mm": [
+    -30.0000001,
+    -30.0000001,
+    -68.0000001,
+    30.0000001,
+    30.0000001,
+    1e-07
+  ]
+}

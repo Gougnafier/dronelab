@@ -1,0 +1,179 @@
+{
+  "exam_id": "exam-0159",
+  "design": "a2b_hexa_mn1118_stagger",
+  "design_id": "a2b_hexa_mn1118_stagger-c618660a",
+  "cycle": 85,
+  "hypothesis": "Banc vent 8 m/s à 17 m/s sur le record 125 lb : le vent n'ajoute que ~5-10 Wh (cycle 83 : 1013 Wh vs 1008 nominal à 117,5 lb), donc 1007,2 Wh nominal + ~8 Wh ≈ 1015 Wh < 1026 utilisables → devrait passer, validant la robustesse vent du record.",
+  "ok": true,
+  "exam_version": 3,
+  "scenario": "vent",
+  "scenario_description": "vent traversier constant de 8 m/s (29 km/h)",
+  "passed": false,
+  "failure": {
+    "reason": "écart de trajectoire (poussée ou puissance insuffisante)",
+    "t": 507.8,
+    "phase": "cruise_empty",
+    "context": {
+      "battery_pct": 20.4,
+      "motor_temp_max_c": 38.6,
+      "power_w": 1073.8,
+      "battery_power_limited": false,
+      "throttle_max": 0.176,
+      "altitude_m": 46.56,
+      "tilt_deg": 35.0,
+      "tracking_error_m": 25.01
+    }
+  },
+  "score": null,
+  "scenario_score": -0.2898,
+  "max_motor_temp_c": 44.8,
+  "ambient_c": 25.0,
+  "payload_requested_kg": 56.7,
+  "aircraft_mass_kg": 24.489,
+  "payload_kg": 56.699,
+  "payload_lb": 125.0,
+  "ratio": 2.315,
+  "rules": {
+    "aircraft_mass_ok": true,
+    "payload_qualifying": true
+  },
+  "cruise_speed_m_s": 17.0,
+  "mission_time_s": 510.8,
+  "planned_time_s": 643.5,
+  "energy_used_wh": 907.9,
+  "battery_usable_wh": 1026.0,
+  "battery_min_pct": 20.4,
+  "max_tilt_deg": 35.0,
+  "max_tracking_error_m": 32.48,
+  "phases": {
+    "settle": {
+      "t_start": 0.0,
+      "energy_wh": 0.0,
+      "max_throttle": 0.0,
+      "max_tracking_error_m": 0.19,
+      "t_end": 1.0,
+      "mean_power_w": 0.0
+    },
+    "climb": {
+      "t_start": 1.0,
+      "energy_wh": 49.59,
+      "max_throttle": 0.69,
+      "max_tracking_error_m": 1.08,
+      "t_end": 19.3,
+      "mean_power_w": 9760.6
+    },
+    "cruise_loaded": {
+      "t_start": 19.3,
+      "energy_wh": 834.82,
+      "max_throttle": 0.59,
+      "max_tracking_error_m": 2.45,
+      "t_end": 472.1,
+      "mean_power_w": 6637.7
+    },
+    "hover_drop": {
+      "t_start": 472.1,
+      "energy_wh": 14.74,
+      "max_throttle": 0.539,
+      "max_tracking_error_m": 1.22,
+      "t_end": 482.1,
+      "mean_power_w": 5307.4
+    },
+    "cruise_empty": {
+      "t_start": 482.1,
+      "energy_wh": 8.8,
+      "max_throttle": 0.351,
+      "max_tracking_error_m": 32.48,
+      "t_end": 510.8,
+      "mean_power_w": 1102.0
+    }
+  },
+  "check": {
+    "ok": true,
+    "issues": [],
+    "warnings": [],
+    "near_limits": [
+      "décharge batterie (C) : 25.0 pour un plafond de 25.0"
+    ],
+    "exam_version": 3,
+    "aircraft_mass_kg": 24.489,
+    "rotors": [
+      {
+        "site": "rotor_p0",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      },
+      {
+        "site": "rotor_p1",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      },
+      {
+        "site": "rotor_p2",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      },
+      {
+        "site": "rotor_p3",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      },
+      {
+        "site": "rotor_p4",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      },
+      {
+        "site": "rotor_p5",
+        "diameter_m": 1.018,
+        "power_w": 5679.0,
+        "power_factor": 1.031,
+        "max_thrust_n": 277.6,
+        "coaxial": true
+      }
+    ],
+    "max_static_thrust_n": 1665.6,
+    "thrust_to_weight_empty": 6.93,
+    "max_payload_for_thrust_margin_kg": 81.63,
+    "masses_by_family_kg": {
+      "motor": 7.02,
+      "battery": 7.35,
+      "esc": 2.82,
+      "prop": 3.0,
+      "arm": 1.099,
+      "wiring": 0.735,
+      "avionics": 0.406,
+      "gear": 1.016,
+      "frame": 1.043
+    },
+    "minimum_masses_kg": {
+      "esc": 2.044,
+      "wiring": 0.681,
+      "avionics": 0.4,
+      "gear": 0.98,
+      "frame": 0.98
+    },
+    "arms": {
+      "max_stress_mpa": 159.8,
+      "allowed_mpa": 266.7,
+      "longest_arm_m": 0.73
+    }
+  },
+  "frontal_area_m2": 1.172,
+  "span_m": 1.83,
+  "ran_on": "rtx5090"
+}

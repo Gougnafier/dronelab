@@ -246,3 +246,21 @@ def test_scout_sessions_alternate_every_n_successful_cycles(root):
     assert sup.scout_due() is None
     sup.run_cycle(); sup.run_cycle()
     assert sup.scout_due() == "revue"
+
+
+def test_clean_run_waits_for_the_mission_from_discord(root):
+    sup, runner = make(root, lambda c: [entry()], await_mission=True, max_cycles=1)
+    calls = []
+
+    def fake_sleep(seconds):
+        calls.append(seconds)
+        if len(calls) == 2:  # l'utilisateur écrit sa mission pendant l'attente
+            toolbox.post_instruction("Concevoir un drone qui porte 4 fois son poids sur le parcours DARPA Lift.")
+
+    sup.sleep = fake_sleep
+    sup.run()
+    state = Workspace.open("heavylift", root).state()
+    assert state["mission"]["text"].startswith("Concevoir un drone")
+    cycle_prompts = [p for p in runner.prompts if "Session de RAPPORT" not in p]
+    assert "Mission confiée par l'utilisateur" in cycle_prompts[0]
+    assert toolbox.user_inbox()["pending"] == []  # la mission n'est pas traitée comme une consigne ordinaire

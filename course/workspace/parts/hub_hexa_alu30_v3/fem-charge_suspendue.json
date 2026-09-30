@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "hub_hexa_alu30_v3",
+  "load_case": "charge_suspendue",
+  "part_hash": "9d40d5b91a",
+  "von_mises_max_mpa": 100.56,
+  "max_displacement_mm": 0.4617,
+  "nodes": 140117,
+  "elements": 76677,
+  "fixed_nodes": 3064,
+  "loaded_nodes": 17184,
+  "mesh_mm": 4.0,
+  "seconds": 16.5,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 2.74,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

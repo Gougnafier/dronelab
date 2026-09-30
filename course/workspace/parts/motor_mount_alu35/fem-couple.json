@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "motor_mount_alu35",
+  "load_case": "couple",
+  "part_hash": "25b93e083b",
+  "von_mises_max_mpa": 1.31,
+  "max_displacement_mm": 0.0004,
+  "nodes": 61322,
+  "elements": 31865,
+  "fixed_nodes": 12069,
+  "loaded_nodes": 5098,
+  "mesh_mm": 1.67,
+  "seconds": 4.0,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 210.69,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

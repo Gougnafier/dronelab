@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "motor_mount_alu",
+  "load_case": "poussee_max",
+  "part_hash": "a640ea3220",
+  "von_mises_max_mpa": 0.01,
+  "max_displacement_mm": 0.0005,
+  "nodes": 49012,
+  "elements": 25570,
+  "fixed_nodes": 15208,
+  "loaded_nodes": 7290,
+  "mesh_mm": 1.63,
+  "seconds": 2.8,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 27600.0,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

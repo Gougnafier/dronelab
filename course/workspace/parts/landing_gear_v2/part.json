@@ -1,0 +1,23 @@
+{
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "gear",
+  "interfaces": [
+    {"name": "tube", "type": "tube_socket", "params": {"tube_od_m": 0.030, "anti_rotation": "cross_bolt_M4_vertical"}}
+  ],
+  "load_cases": [
+    {
+      "name": "atterrissage",
+      "fixed_box_mm": [-135, -135, -10, 135, 135, 10],
+      "load_box_mm": [-112, -112, -69, 112, 112, -10],
+      "force_n": [0, 0, -400]
+    },
+    {
+      "name": "atterrissage_dur",
+      "fixed_box_mm": [-135, -135, -10, 135, 135, 10],
+      "load_box_mm": [-112, -112, -69, 112, 112, -10],
+      "force_n": [0, 0, -2200]
+    }
+  ],
+  "heat": {"heat_w": 0}
+}

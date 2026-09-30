@@ -715,6 +715,27 @@ def record_reality_review(verdict: str, summary: str, gaps: list[dict]) -> dict:
     return {"ok": True, "cycle": review["cycle"], "exam_gaps_sent_to_team": len(exam_gaps)}
 
 
+@tool
+def report_exam_limitation(aspect: str, exam_assumption: str, evidence: str, source_url: str, suggestion: str) -> dict:
+    """Signale à l'équipe une hypothèse de l'épreuve qui semble irréaliste (ex. facteur de mérite des hélices,
+    batterie à tension constante), avec une preuve sourcée. L'épreuve ne change que si l'équipe le décide ;
+    continue ton travail avec l'épreuve actuelle."""
+    if not source_url.startswith(("http://", "https://")) or len(evidence.strip()) < 20:
+        return {"ok": False, "reason": "preuve (20 caractères min) et URL de la source obligatoires"}
+    from ..store import append_jsonl, now_iso, read_jsonl
+
+    path = _ws().root / "exam_limitations.jsonl"
+    record = {"id": f"lim-{len(read_jsonl(path)) + 1:03d}", "timestamp": now_iso(), "cycle": _ws().current_cycle(),
+              "aspect": aspect, "exam_assumption": exam_assumption, "evidence": evidence, "source_url": source_url,
+              "suggestion": suggestion, "status": "à examiner par l'équipe"}
+    append_jsonl(path, record)
+    notify.send(_ws().root, "exam_limitation",
+                f"🧪 Limite de l'épreuve signalée par l'ingénieur ({record['id']}, cycle {record['cycle']}) : {aspect}\n"
+                f"Hypothèse de l'épreuve : {exam_assumption[:300]}\nPreuve : {evidence[:500]}\nSource : {source_url}\n"
+                f"Suggestion : {suggestion[:300]}")
+    return {"ok": True, "id": record["id"], "note": "transmis à l'équipe ; continuer avec l'épreuve actuelle"}
+
+
 GENERIC_ENGINEER = [brief, best_designs, history, notebook_write, notebook_read, notebook_summary_write, user_inbox,
                     reply_to_user, ask_user, result_fields, plot_results, plot_progress, send_report]
 GENERIC_DESK = [status, best_designs, history, notebook_read, post_instruction, decide_proposal, user_inbox,
@@ -727,7 +748,7 @@ PRODUCT_TOOLS = {
                                render_design, propose_model_update],
                   "desk": [render_design], "auditor": []},
     "lift_challenge": {"engineer": [materials_info, catalog_add, catalog_search, part_build, part_fem, assembly_compile,
-                                    check_design, run_exam, exam_telemetry, exam_list],
+                                    check_design, run_exam, exam_telemetry, exam_list, report_exam_limitation],
                        "desk": [exam_list, catalog_search, field_notes],
                        "auditor": [exam_telemetry, exam_list, check_design, catalog_search, materials_info],
                        "scout": [exam_list, exam_telemetry, check_design, catalog_search, materials_info]},

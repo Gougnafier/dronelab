@@ -97,6 +97,6 @@ Le laboratoire fonctionne : conception de zéro, essais réels en simulation, le
 Toutes les recommandations ont été appliquées ; voir [décisions](../decisions.md). Vérification :
 
 - 33 tests passent, dont un test par faille relevée (chevauchement, pièces manquantes, batterie trop dense, décharge trop forte, bras faibles, marge de poussée), la gestion du refus 429, l’alerte unique puis la reprise, et l’obligation de répondre à l’audit.
-- Les 16 conceptions de l’agent repassées au contrôle v2 : **toutes refusées** ([détail](recheck-v2-designs.json)). Le record `v3_hexa52_5.5kW_ultralight` manque notamment de 1,98 kg de variateurs, 0,66 kg de câblage, 1 kg de train, 0,7 kg de moyeu, et sa batterie dépasse 260 Wh/kg.
+- Les 16 conceptions de l’agent repassées au contrôle v2 : **toutes refusées** (détail archivé hors du dépôt). Le record `v3_hexa52_5.5kW_ultralight` manque notamment de 1,98 kg de variateurs, 0,66 kg de câblage, 1 kg de train, 0,7 kg de moyeu, et sa batterie dépasse 260 Wh/kg.
 - Épreuve v2 vérifiée de bout en bout sur la RTX 5090 (vol réussi avec vidéo ; refus motivé par la marge de poussée).
 - L’agent a reçu un message de l’équipe (`msg-0003`) exposant l’audit et la v2 ; il reprend au cycle 70 avec un classement remis à zéro.

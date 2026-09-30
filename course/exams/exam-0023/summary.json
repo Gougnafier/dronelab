@@ -1,0 +1,140 @@
+{
+  "exam_id": "exam-0023",
+  "design": "v1_octo28",
+  "design_id": "v1_octo28-225e6545",
+  "cycle": 2,
+  "hypothesis": "Réessayer 31.75 kg (70 lb) - le résultat précédent montrait 30.62 kg, possible cache.",
+  "ok": true,
+  "passed": true,
+  "failure": null,
+  "score": -0.0386,
+  "aircraft_mass_kg": 16.86,
+  "payload_kg": 30.617,
+  "payload_lb": 67.5,
+  "ratio": 1.816,
+  "rules": {
+    "aircraft_mass_ok": true,
+    "payload_qualifying": false
+  },
+  "cruise_speed_m_s": 12.0,
+  "mission_time_s": 860.4,
+  "planned_time_s": 860.4,
+  "energy_used_wh": 851.9,
+  "battery_usable_wh": 1890.0,
+  "battery_min_pct": 59.4,
+  "max_tilt_deg": 34.8,
+  "max_tracking_error_m": 0.91,
+  "phases": {
+    "settle": {
+      "t_start": 0.0,
+      "energy_wh": 0.0,
+      "max_throttle": 0.0,
+      "max_tracking_error_m": 0.18,
+      "t_end": 1.0,
+      "mean_power_w": 0.0
+    },
+    "climb": {
+      "t_start": 1.0,
+      "energy_wh": 31.27,
+      "max_throttle": 0.465,
+      "max_tracking_error_m": 1.04,
+      "t_end": 19.3,
+      "mean_power_w": 6154.2
+    },
+    "cruise_loaded": {
+      "t_start": 19.3,
+      "energy_wh": 758.06,
+      "max_throttle": 0.368,
+      "max_tracking_error_m": 0.91,
+      "t_end": 648.6,
+      "mean_power_w": 4336.3
+    },
+    "hover_drop": {
+      "t_start": 648.6,
+      "energy_wh": 10.2,
+      "max_throttle": 0.359,
+      "max_tracking_error_m": 0.12,
+      "t_end": 658.6,
+      "mean_power_w": 3671.2
+    },
+    "cruise_empty": {
+      "t_start": 658.6,
+      "energy_wh": 40.2,
+      "max_throttle": 0.154,
+      "max_tracking_error_m": 0.17,
+      "t_end": 824.9,
+      "mean_power_w": 870.0
+    },
+    "descent": {
+      "t_start": 825.0,
+      "energy_wh": 10.39,
+      "max_throttle": 0.117,
+      "max_tracking_error_m": 0.51,
+      "t_end": 855.4,
+      "mean_power_w": 1227.5
+    },
+    "landing": {
+      "t_start": 855.4,
+      "energy_wh": 1.8,
+      "max_throttle": 0.155,
+      "max_tracking_error_m": 0.18,
+      "t_end": 860.4,
+      "mean_power_w": 1292.2
+    }
+  },
+  "check": {
+    "ok": true,
+    "issues": [],
+    "warnings": [],
+    "aircraft_mass_kg": 16.86,
+    "rotors": [
+      {
+        "site": "rotor_0",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_1",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_2",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_3",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_4",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_5",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_6",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      },
+      {
+        "site": "rotor_7",
+        "diameter_m": 0.711,
+        "max_thrust_n": 176.6
+      }
+    ],
+    "max_static_thrust_n": 1412.8,
+    "thrust_to_weight_empty": 8.54,
+    "motor_mass_kg": 6.4,
+    "battery_geom_mass_kg": 7.0
+  },
+  "frontal_area_m2": 1.401,
+  "span_m": 1.81,
+  "ran_on": "rtx5090"
+}

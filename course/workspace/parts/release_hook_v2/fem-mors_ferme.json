@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "release_hook_v2",
+  "load_case": "mors_ferme",
+  "part_hash": "d5442adfb2",
+  "von_mises_max_mpa": 11.28,
+  "max_displacement_mm": 0.0021,
+  "nodes": 59486,
+  "elements": 37889,
+  "fixed_nodes": 25430,
+  "loaded_nodes": 1713,
+  "mesh_mm": 2.38,
+  "seconds": 7.5,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 503.0,
+  "sf": 44.59,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

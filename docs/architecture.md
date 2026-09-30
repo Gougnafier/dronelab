@@ -1,6 +1,6 @@
 # Architecture — l’ingénieur produit autonome
 
-État au 28 septembre 2026. Ce document décrit ce qui est en place et vérifié ; les limites sont listées à la fin.
+État au 30 septembre 2026, après la course des cycles 74 à 109. Ce document décrit ce qui est en place et vérifié ; les limites sont listées à la fin.
 
 ## En une phrase
 
@@ -10,13 +10,13 @@ On confie à l’agent un problème d’ingénierie (ici : concevoir de zéro un
 
 | Qui | Construit | Exemples |
 | --- | --- | --- |
-| Nous (équipe + Claude) | **Le laboratoire** : outils génériques, boucle de travail, mémoire, garde-fous, rapports | superviseur, serveur d’outils MCP, rendu vidéo, canal Discord |
+| Nous | **Le laboratoire** : outils génériques, boucle de travail, mémoire, garde-fous, rapports | superviseur, serveur d’outils MCP, rendu vidéo, canal Discord |
 | Nous | **L’examen** : une épreuve fixe, tirée du règlement, que l’agent ne peut pas modifier | simulation MuJoCo du parcours DARPA Lift |
 | L’agent | **Le produit** : recherches, calculs, conception, essais, conclusions | ses scripts de dimensionnement, ses fichiers de drone, son cahier de labo |
 
 ```mermaid
 flowchart LR
-    subgraph NOUS["Nous : équipe + Claude"]
+    subgraph NOUS["Nous"]
         LAB["Laboratoire<br/>outils, boucle, mémoire,<br/>garde-fous, rapports"]
         EXAM["Examen<br/>épreuve simulée DARPA Lift<br/>fixe, tirée du règlement"]
     end
@@ -40,10 +40,11 @@ flowchart LR
     subgraph DEV["Machine de développement"]
         direction TB
         SUP["Superviseur Python<br/>boucle codée en dur"]
-        subgraph HERMES["Hermes Agent · 3 profils"]
+        subgraph HERMES["Hermes Agent · 4 profils"]
             direction TB
-            ENG["dronelab<br/>INGÉNIEUR<br/>Nemotron 3 Ultra"]
-            AUD["dronecheck<br/>VÉRIFICATEUR<br/>DeepSeek V4 Flash"]
+            ENG["dronelab<br/>INGÉNIEUR"]
+            AUD["dronecheck<br/>VÉRIFICATEUR"]
+            SCOUT["dronescout<br/>ÉCLAIREUR"]
             DESK["dronedesk<br/>INTERLOCUTEUR"]
         end
         MCP["Serveur d'outils MCP<br/>engineer · auditor · desk"]
@@ -51,6 +52,7 @@ flowchart LR
         RENDER["Rendu vidéo<br/>MuJoCo + EGL"]
         SUP -->|"lance chaque cycle"| ENG
         SUP -->|"lance l'audit"| AUD
+        SUP -->|"tous les 3 cycles"| SCOUT
         HERMES --> MCP
         MCP <--> FILES
         MCP --> RENDER --> FILES
@@ -61,25 +63,26 @@ flowchart LR
         FEM["Éléments finis<br/>CalculiX"]
     end
 
-    NVIDIA[("build.nvidia.com<br/>modèles de langage")]
+    LLM[("Modèles de langage")]
 
     DISCORD <--> DESK
     SUP -->|"records, alertes,<br/>rapports"| DISCORD
     MCP <-->|"SSH : dossier →<br/>télémétrie + trajectoire"| SIM
-    HERMES -.->|"inférence"| NVIDIA
+    HERMES -.->|"inférence"| LLM
 ```
 
 ## Les briques
 
 ### 1. Hermes Agent : le cerveau outillé
 
-[Hermes Agent](https://hermes-agent.nousresearch.com/docs/) (Nous Research, v0.18.2) est le « harness » : il fait tourner un modèle de langage avec des outils, des compétences (skills) et des serveurs MCP. Trois profils isolés, chacun avec sa personnalité (`hermes/*.SOUL.md`), son modèle et ses outils :
+[Hermes Agent](https://hermes-agent.nousresearch.com/docs/) (Nous Research, v0.18.2) est le « harness » : il fait tourner un modèle de langage avec des outils, des compétences (skills) et des serveurs MCP. Quatre profils isolés, chacun avec sa personnalité (`hermes/*.SOUL.md`), ses compétences et ses outils. Chaque profil peut utiliser un modèle différent ; le vérificateur utilise volontairement un autre modèle que l'ingénieur.
 
-| Profil | Rôle | Modèle (build.nvidia.com) | Outils Hermes actifs | Outils Hermes coupés |
-| --- | --- | --- | --- | --- |
-| `dronelab` | Ingénieur | `nvidia/nemotron-3-ultra-550b-a55b` | web, navigateur, fichiers, terminal, exécution de code, vision, compétences, tâches | contrôle de l’ordinateur, images, voix, questions bloquantes, tâches planifiées, mémoire persistante |
-| `dronecheck` | Vérificateur | `deepseek-ai/deepseek-v4-flash` (autre famille de modèle, exprès) | web, navigateur, fichiers, vision, compétences | terminal, exécution de code, délégation, et les mêmes que ci-dessus |
-| `dronedesk` | Interlocuteur Discord | `nvidia/nemotron-3-ultra-550b-a55b` | web, navigateur, fichiers, vision, compétences | terminal, exécution de code, contrôle de l’ordinateur, mémoire, et les autres |
+| Profil | Rôle | Outils Hermes actifs | Outils Hermes coupés |
+| --- | --- | --- | --- |
+| `dronelab` | Ingénieur | web, navigateur, fichiers, terminal, exécution de code, vision, compétences, tâches | contrôle de l’ordinateur, images, voix, questions bloquantes, tâches planifiées, mémoire persistante |
+| `dronecheck` | Vérificateur | web, navigateur, fichiers, vision, compétences | terminal, exécution de code, délégation, et les mêmes que ci-dessus |
+| `dronescout` | Éclaireur | web, navigateur, fichiers, vision, compétences, recherche et transcription YouTube | terminal, exécution de code, et les mêmes que ci-dessus |
+| `dronedesk` | Interlocuteur Discord | web, navigateur, fichiers, vision, compétences | terminal, exécution de code, contrôle de l’ordinateur, mémoire, et les autres |
 
 La mémoire persistante de Hermes est coupée chez l’ingénieur : sa seule mémoire d’un cycle à l’autre est le cahier de labo, ce qui rend son raisonnement traçable.
 
@@ -249,7 +252,7 @@ flowchart LR
 
 ### 4 ter. L’éclaireur : ramener le travail au réel
 
-Un quatrième agent (`dronescout`, DeepSeek V4 Flash) confronte les conceptions au terrain. Tous les 3 cycles réussis, il alterne une session de **veille** et une **revue de réalisme**.
+Un quatrième agent (`dronescout`) confronte les conceptions au terrain. Tous les 3 cycles réussis, il alterne une session de **veille** et une **revue de réalisme**.
 
 ```mermaid
 flowchart LR
@@ -425,7 +428,7 @@ flowchart LR
 | Superviseur + ingénieur + vérificateur | Machine de développement | `systemctl --user status dronelab-agent` ; arrêt propre : `touch runs/lift_challenge/STOP` |
 | Passerelle Discord | Machine de développement | `systemctl --user status hermes-gateway-dronedesk` |
 | Épreuve simulée, éléments finis | RTX 5090 (WSL2), `~/drone-agent/` | code synchronisé par `scripts/sync_5090.sh` |
-| Modèles de langage | build.nvidia.com | clé dans les `.env` des profils Hermes, hors dépôt |
+| Modèles de langage | fournisseur configuré dans chaque profil Hermes | clé dans les `.env` des profils, hors dépôt |
 
 Lancement :
 
@@ -436,10 +439,10 @@ python scripts/run_agent.py --product lift_challenge --hermes-cmd dronelab --aud
 
 ## Ce qui est vérifié, ce qui ne l’est pas
 
-**Vérifié** : 28 tests sans modèle de langage (`python -m pytest -q`) : épreuve (vol réussi, épuisement de batterie, refus d’un dossier invalide ou d’une déclaration implausible), outils du vérificateur, superviseur (échec sans cahier, alerte, reprise après redémarrage, rétrospective au plateau, consignes, validation des propositions, rapports), modèles analytiques comparés à la théorie des poutres, calcul par éléments finis des bras comparé au modèle analytique (écarts < 1 %). Chaîne complète vérifiée : vol sur la 5090, vidéo, télémétrie, notification Discord.
+**Vérifié** : 42 tests sans modèle de langage (`python -m pytest -q`) : épreuve (vol réussi, épuisement de batterie, refus d’un dossier invalide ou d’une déclaration implausible), outils du vérificateur, superviseur (échec sans cahier, alerte, reprise après redémarrage, rétrospective au plateau, consignes, validation des propositions, rapports), modèles analytiques comparés à la théorie des poutres, calcul par éléments finis des bras comparé au modèle analytique (écarts < 1 %). Chaîne complète vérifiée : vol sur la 5090, vidéo, télémétrie, notification Discord.
 
 **Leçon de l’audit du 28 septembre** : sur l’épreuve v1, l’agent a atteint 6,73:1 en exploitant ce que l’épreuve ne contrôlait pas (hélices qui se chevauchent, pièces manquantes, masses calées sur les plafonds). La v2 ferme ces failles ; toute règle absente de l’épreuve reste une faille potentielle, d’où le volet « réalisme » du vérificateur.
 
-**Limites connues de l’épreuve** (simplifications d’un banc d’essai de conception, pas d’une certification) : pas de vent ni de rafales, facteur de mérite constant, tension batterie constante, pas d’échauffement moteur, pas d’interaction aérodynamique entre rotors (seulement un contrôle de chevauchement), traînée estimée par la boîte englobante, pilote automatique générique. L’épreuve est la même pour toutes les conceptions : elle compare équitablement les designs de l’agent, sans prédire exactement un vol réel.
+**Limites connues de l’épreuve** (simplifications d’un banc d’essai de conception, pas d’une certification) : corps rigides (flexion et vibration des bras calculées à part), facteur de mérite constant, tension batterie constante sans résistance interne, pénalité de recouvrement des hélices linéaire et probablement trop clémente, traînée estimée par sphères englobantes, pilote automatique générique. Les limites signalées par l’agent sont listées dans l’[audit du 29 septembre](validation/audit-agent-2026-09-29.md). L’épreuve est la même pour toutes les conceptions : elle compare équitablement les designs de l’agent, sans prédire exactement un vol réel.
 
 **Limites de l’agent** : les valeurs qu’il trouve sur le web ne sont vérifiées que par le vérificateur (lui-même un modèle de langage) et par les garde-fous de plausibilité ; les rapports et audits sont rédigés par des modèles et peuvent se tromper, d’où la vidéo et la télémétrie brute, toujours disponibles pour contrôle humain.

@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant S as Superviseur
+    participant E as Ingénieur
+    participant T as Outils du labo
+    participant G as RTX 5090
+    participant V as Vérificateur
+    participant K as Éclaireur
+    participant D as Discord
+    S->>E: contexte neuf : mission, dernier audit, résumé du cahier, meilleurs designs, demandes
+    E->>T: catalog_add (la fiche produit est ouverte et vérifiée)
+    E->>T: part_build + part_fem (script CAO, matériau, procédé)
+    T->>G: éléments finis (CalculiX)
+    E->>T: assembly_compile (masses calculées, jamais déclarées)
+    E->>T: run_exam (charge, scénario)
+    T->>G: vol MuJoCo du parcours complet
+    G-->>E: verdict + télémétrie à 10 Hz
+    E->>T: notebook_write (doit répondre point par point au dernier audit)
+    S->>V: audite ce cycle au regard des preuves
+    V-->>D: ok / réserves / problème
+    S->>K: tous les 3 cycles : veille terrain ou revue de réalisme
+    K-->>E: demandes d'essai dans la boîte
+    S-->>D: nouveau record avec la vidéo du vol

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "hub_hexa_alu30_v5",
+  "load_case": "poussee_bras",
+  "part_hash": "93c26b85bd",
+  "von_mises_max_mpa": 7.79,
+  "max_displacement_mm": 0.0214,
+  "nodes": 118260,
+  "elements": 63732,
+  "fixed_nodes": 35921,
+  "loaded_nodes": 1355,
+  "mesh_mm": 4.0,
+  "seconds": 7.7,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 35.43,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

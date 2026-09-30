@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "part": "landing_gear_alu",
+  "hash": "d8f07e0361",
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "gear",
+  "size_mm": [
+    144.0,
+    270.0,
+    270.0
+  ],
+  "volume_cm3": 376.18,
+  "com_mm": [
+    3.466008365160375e-14,
+    3.0946503260360495e-15,
+    -65.04708687389834
+  ],
+  "mass_kg": 1.0157,
+  "issues": [],
+  "fem_required": [
+    "atterrissage",
+    "atterrissage_dur"
+  ],
+  "fem_done": {
+    "atterrissage": {
+      "sf": 217.32,
+      "ok": true,
+      "up_to_date": false
+    }
+  },
+  "image": "runs/lift_challenge/workspace/parts/landing_gear_alu/view.png",
+  "solids": 1,
+  "volume_mm3": 376182.4747936924,
+  "area_mm2": 74051.6696661202,
+  "inertia_mm5": [
+    3954690720.076542,
+    -3.278255462646484e-07,
+    -3.712803276577748e-07,
+    -3.278255462646484e-07,
+    3954690720.076516,
+    -1.9493406507407588e-07,
+    -3.712803276577748e-07,
+    -1.9493406507407588e-07,
+    6489667406.748051
+  ],
+  "bbox_mm": [
+    -135.0000001,
+    -135.0000001,
+    -141.0000001,
+    135.0000001,
+    135.0000001,
+    3.0000001
+  ]
+}

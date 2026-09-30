@@ -12,7 +12,7 @@ import math
 import pytest
 
 from drone_agent.lift import assembly, catalog, parts
-from drone_agent.lift.exam import check_package, exam_spec, run_exam
+from drone_agent.lift.exam import check_package, exam_spec, load_assets, run_exam
 
 OK_PAGE = lambda url: {"reachable": True, "status": 200, "text": "fiche technique 0.7 kg 3000 W"}
 R = 0.62  # rayon des rotors (m)
@@ -136,11 +136,14 @@ def test_assembly_compiles_with_computed_masses_and_flies(lab):
     design = json.loads((design_dir / "design.json").read_text())
     spec = copy.deepcopy(exam_spec())
     spec["rules"].update(loaded_distance_m=120, unloaded_distance_m=60, cruise_altitude_m=15)
-    result = run_exam(xml, design, 10.0, spec=spec)
+    assets = load_assets(design_dir)
+    assert assets and all(name.startswith("meshes/") for name in assets)  # chemins relatifs, transportables
+    assert "/workspace/parts/" not in xml
+    result = run_exam(xml, design, 10.0, spec=spec, assets=assets)
     assert result["passed"], result["failure"]
 
     tampered = xml.replace('mass="6.00000"', 'mass="4.00000"')
-    assert any("non compilé" in i for i in check_package(tampered, design)["issues"])
+    assert any("non compilé" in i for i in check_package(tampered, design, assets=assets)["issues"])
 
 
 def test_assembly_checks_interfaces_and_part_validation(lab):

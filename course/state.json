@@ -1,0 +1,1553 @@
+{
+  "product": "lift_challenge",
+  "cycle": 109,
+  "best_history": [
+    [
+      74,
+      null
+    ],
+    [
+      75,
+      null
+    ],
+    [
+      76,
+      null
+    ],
+    [
+      77,
+      null
+    ],
+    [
+      78,
+      null
+    ],
+    [
+      79,
+      -2.0
+    ],
+    [
+      80,
+      -0.274
+    ],
+    [
+      81,
+      2.0836
+    ],
+    [
+      82,
+      2.1762
+    ],
+    [
+      83,
+      2.1763
+    ],
+    [
+      84,
+      2.3153
+    ],
+    [
+      85,
+      2.3153
+    ],
+    [
+      86,
+      2.3153
+    ],
+    [
+      87,
+      2.3153
+    ],
+    [
+      88,
+      2.4163
+    ],
+    [
+      89,
+      2.4163
+    ],
+    [
+      90,
+      2.4163
+    ],
+    [
+      91,
+      2.4163
+    ],
+    [
+      92,
+      2.4163
+    ],
+    [
+      93,
+      2.4163
+    ],
+    [
+      94,
+      2.4163
+    ],
+    [
+      95,
+      2.4163
+    ],
+    [
+      96,
+      2.4163
+    ],
+    [
+      97,
+      2.4163
+    ],
+    [
+      98,
+      2.4163
+    ],
+    [
+      99,
+      2.4163
+    ],
+    [
+      100,
+      2.4163
+    ],
+    [
+      101,
+      2.4163
+    ],
+    [
+      102,
+      2.4163
+    ],
+    [
+      103,
+      2.4163
+    ],
+    [
+      104,
+      2.4163
+    ],
+    [
+      105,
+      2.4163
+    ],
+    [
+      106,
+      2.4163
+    ],
+    [
+      107,
+      2.4163
+    ],
+    [
+      108,
+      2.4163
+    ],
+    [
+      109,
+      2.4163
+    ]
+  ],
+  "consecutive_failures": 0,
+  "retrospectives": [
+    {
+      "cycle": 104,
+      "best_before": 2.4163
+    }
+  ],
+  "last_retrospective_cycle": 104,
+  "llm_runs": 107,
+  "created_at": "2026-09-28T01:08:31+02:00",
+  "cycle_log": [
+    {
+      "cycle": 1,
+      "started_at": "2026-09-28T01:08:31+02:00",
+      "ended_at": "2026-09-28T01:14:02+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 2,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 330.7
+    },
+    {
+      "cycle": 2,
+      "started_at": "2026-09-28T01:14:32+02:00",
+      "ended_at": "2026-09-28T01:38:23+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 32,
+      "returncode": 0,
+      "seconds": 1431.2
+    },
+    {
+      "cycle": 3,
+      "started_at": "2026-09-28T01:38:58+02:00",
+      "ended_at": "2026-09-28T01:50:41+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 2,
+      "evaluations": 8,
+      "returncode": 0,
+      "seconds": 703.4
+    },
+    {
+      "cycle": 4,
+      "started_at": "2026-09-28T01:51:17+02:00",
+      "ended_at": "2026-09-28T02:09:24+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 7,
+      "returncode": 0,
+      "seconds": 1086.4
+    },
+    {
+      "cycle": 5,
+      "started_at": "2026-09-28T02:09:58+02:00",
+      "ended_at": "2026-09-28T02:37:57+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 8,
+      "returncode": 0,
+      "seconds": 1679.0
+    },
+    {
+      "cycle": 6,
+      "started_at": "2026-09-28T02:38:32+02:00",
+      "ended_at": "2026-09-28T02:39:04+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 32.5
+    },
+    {
+      "cycle": 7,
+      "started_at": "2026-09-28T02:39:34+02:00",
+      "ended_at": "2026-09-28T02:39:48+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 14.1
+    },
+    {
+      "cycle": 8,
+      "started_at": "2026-09-28T02:40:18+02:00",
+      "ended_at": "2026-09-28T03:01:56+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 12,
+      "returncode": 0,
+      "seconds": 1297.7
+    },
+    {
+      "cycle": 9,
+      "started_at": "2026-09-28T03:02:30+02:00",
+      "ended_at": "2026-09-28T03:03:51+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 80.9
+    },
+    {
+      "cycle": 10,
+      "started_at": "2026-09-28T03:04:21+02:00",
+      "ended_at": "2026-09-28T03:16:18+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 5,
+      "returncode": 0,
+      "seconds": 716.3
+    },
+    {
+      "cycle": 11,
+      "started_at": "2026-09-28T03:16:52+02:00",
+      "ended_at": "2026-09-28T03:17:47+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 55.1
+    },
+    {
+      "cycle": 12,
+      "started_at": "2026-09-28T03:18:17+02:00",
+      "ended_at": "2026-09-28T03:27:38+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 9,
+      "returncode": 0,
+      "seconds": 561.0
+    },
+    {
+      "cycle": 13,
+      "started_at": "2026-09-28T03:28:12+02:00",
+      "ended_at": "2026-09-28T03:28:55+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 43.0
+    },
+    {
+      "cycle": 14,
+      "started_at": "2026-09-28T03:29:25+02:00",
+      "ended_at": "2026-09-28T03:30:19+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 54.4
+    },
+    {
+      "cycle": 15,
+      "started_at": "2026-09-28T03:30:49+02:00",
+      "ended_at": "2026-09-28T03:39:14+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 4,
+      "returncode": 0,
+      "seconds": 504.2
+    },
+    {
+      "cycle": 16,
+      "started_at": "2026-09-28T03:39:48+02:00",
+      "ended_at": "2026-09-28T03:40:56+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 67.9
+    },
+    {
+      "cycle": 17,
+      "started_at": "2026-09-28T03:41:26+02:00",
+      "ended_at": "2026-09-28T03:42:32+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 65.7
+    },
+    {
+      "cycle": 18,
+      "started_at": "2026-09-28T03:43:02+02:00",
+      "ended_at": "2026-09-28T03:43:57+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 55.0
+    },
+    {
+      "cycle": 19,
+      "started_at": "2026-09-28T03:58:59+02:00",
+      "ended_at": "2026-09-28T04:07:49+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 3,
+      "returncode": 0,
+      "seconds": 529.9
+    },
+    {
+      "cycle": 20,
+      "started_at": "2026-09-28T04:08:19+02:00",
+      "ended_at": "2026-09-28T04:10:58+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 159.2
+    },
+    {
+      "cycle": 21,
+      "started_at": "2026-09-28T04:11:28+02:00",
+      "ended_at": "2026-09-28T04:12:36+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 67.7
+    },
+    {
+      "cycle": 22,
+      "started_at": "2026-09-28T04:13:06+02:00",
+      "ended_at": "2026-09-28T04:14:39+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 1,
+      "returncode": 1,
+      "seconds": 92.4
+    },
+    {
+      "cycle": 23,
+      "started_at": "2026-09-28T04:29:41+02:00",
+      "ended_at": "2026-09-28T04:39:19+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 2,
+      "evaluations": 6,
+      "returncode": 0,
+      "seconds": 577.4
+    },
+    {
+      "cycle": 24,
+      "started_at": "2026-09-28T04:39:53+02:00",
+      "ended_at": "2026-09-28T04:40:40+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 46.6
+    },
+    {
+      "cycle": 25,
+      "started_at": "2026-09-28T04:41:10+02:00",
+      "ended_at": "2026-09-28T04:42:52+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 102.4
+    },
+    {
+      "cycle": 26,
+      "started_at": "2026-09-28T04:43:22+02:00",
+      "ended_at": "2026-09-28T04:44:15+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 53.3
+    },
+    {
+      "cycle": 27,
+      "started_at": "2026-09-28T04:59:18+02:00",
+      "ended_at": "2026-09-28T05:00:43+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 85.0
+    },
+    {
+      "cycle": 28,
+      "started_at": "2026-09-28T05:15:45+02:00",
+      "ended_at": "2026-09-28T05:16:29+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 43.8
+    },
+    {
+      "cycle": 29,
+      "started_at": "2026-09-28T05:31:32+02:00",
+      "ended_at": "2026-09-28T05:32:04+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 32.4
+    },
+    {
+      "cycle": 30,
+      "started_at": "2026-09-28T05:47:06+02:00",
+      "ended_at": "2026-09-28T05:48:08+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 61.4
+    },
+    {
+      "cycle": 31,
+      "started_at": "2026-09-28T06:03:10+02:00",
+      "ended_at": "2026-09-28T06:05:22+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 131.5
+    },
+    {
+      "cycle": 32,
+      "started_at": "2026-09-28T06:20:24+02:00",
+      "ended_at": "2026-09-28T06:21:17+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 53.2
+    },
+    {
+      "cycle": 33,
+      "started_at": "2026-09-28T06:36:20+02:00",
+      "ended_at": "2026-09-28T06:37:03+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 43.6
+    },
+    {
+      "cycle": 34,
+      "started_at": "2026-09-28T06:52:06+02:00",
+      "ended_at": "2026-09-28T06:52:56+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 49.8
+    },
+    {
+      "cycle": 35,
+      "started_at": "2026-09-28T07:07:58+02:00",
+      "ended_at": "2026-09-28T07:09:23+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 85.3
+    },
+    {
+      "cycle": 36,
+      "started_at": "2026-09-28T07:24:26+02:00",
+      "ended_at": "2026-09-28T07:38:57+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 19,
+      "returncode": 0,
+      "seconds": 871.1
+    },
+    {
+      "cycle": 37,
+      "started_at": "2026-09-28T07:39:31+02:00",
+      "ended_at": "2026-09-28T07:40:01+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 29.4
+    },
+    {
+      "cycle": 38,
+      "started_at": "2026-09-28T07:40:31+02:00",
+      "ended_at": "2026-09-28T07:41:23+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 51.8
+    },
+    {
+      "cycle": 39,
+      "started_at": "2026-09-28T07:41:53+02:00",
+      "ended_at": "2026-09-28T07:42:55+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 62.1
+    },
+    {
+      "cycle": 40,
+      "started_at": "2026-09-28T07:57:57+02:00",
+      "ended_at": "2026-09-28T07:59:05+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 67.7
+    },
+    {
+      "cycle": 41,
+      "started_at": "2026-09-28T08:15:49+02:00",
+      "ended_at": "2026-09-28T08:16:34+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 45.7
+    },
+    {
+      "cycle": 42,
+      "started_at": "2026-09-28T08:31:37+02:00",
+      "ended_at": "2026-09-28T08:32:31+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 53.7
+    },
+    {
+      "cycle": 43,
+      "started_at": "2026-09-28T08:47:33+02:00",
+      "ended_at": "2026-09-28T09:04:29+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 8,
+      "returncode": 0,
+      "seconds": 1016.2
+    },
+    {
+      "cycle": 44,
+      "started_at": "2026-09-28T09:05:04+02:00",
+      "ended_at": "2026-09-28T09:06:29+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 85.0
+    },
+    {
+      "cycle": 45,
+      "started_at": "2026-09-28T09:06:59+02:00",
+      "ended_at": "2026-09-28T09:07:59+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 60.0
+    },
+    {
+      "cycle": 46,
+      "started_at": "2026-09-28T09:08:29+02:00",
+      "ended_at": "2026-09-28T09:09:48+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 78.6
+    },
+    {
+      "cycle": 47,
+      "started_at": "2026-09-28T09:24:50+02:00",
+      "ended_at": "2026-09-28T09:26:03+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 72.7
+    },
+    {
+      "cycle": 48,
+      "started_at": "2026-09-28T09:41:05+02:00",
+      "ended_at": "2026-09-28T09:56:38+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 8,
+      "returncode": 0,
+      "seconds": 933.0
+    },
+    {
+      "cycle": 49,
+      "started_at": "2026-09-28T09:57:12+02:00",
+      "ended_at": "2026-09-28T09:58:26+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 73.7
+    },
+    {
+      "cycle": 50,
+      "started_at": "2026-09-28T09:58:56+02:00",
+      "ended_at": "2026-09-28T10:03:35+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 278.5
+    },
+    {
+      "cycle": 51,
+      "started_at": "2026-09-28T10:04:05+02:00",
+      "ended_at": "2026-09-28T10:05:19+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 74.1
+    },
+    {
+      "cycle": 52,
+      "started_at": "2026-09-28T10:20:21+02:00",
+      "ended_at": "2026-09-28T10:37:16+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 1014.9
+    },
+    {
+      "cycle": 53,
+      "started_at": "2026-09-28T10:52:19+02:00",
+      "ended_at": "2026-09-28T10:54:57+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 158.6
+    },
+    {
+      "cycle": 54,
+      "started_at": "2026-09-28T11:10:00+02:00",
+      "ended_at": "2026-09-28T11:12:48+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 167.9
+    },
+    {
+      "cycle": 55,
+      "started_at": "2026-09-28T11:27:50+02:00",
+      "ended_at": "2026-09-28T11:29:21+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 91.1
+    },
+    {
+      "cycle": 56,
+      "started_at": "2026-09-28T11:44:24+02:00",
+      "ended_at": "2026-09-28T12:04:09+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 1185.5
+    },
+    {
+      "cycle": 57,
+      "started_at": "2026-09-28T12:04:39+02:00",
+      "ended_at": "2026-09-28T12:05:43+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 63.5
+    },
+    {
+      "cycle": 58,
+      "started_at": "2026-09-28T12:06:13+02:00",
+      "ended_at": "2026-09-28T12:06:56+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 43.2
+    },
+    {
+      "cycle": 59,
+      "started_at": "2026-09-28T12:07:26+02:00",
+      "ended_at": "2026-09-28T12:07:40+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 14.4
+    },
+    {
+      "cycle": 60,
+      "started_at": "2026-09-28T12:22:43+02:00",
+      "ended_at": "2026-09-28T12:25:04+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 140.4
+    },
+    {
+      "cycle": 61,
+      "started_at": "2026-09-28T12:40:06+02:00",
+      "ended_at": "2026-09-28T12:41:05+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 58.7
+    },
+    {
+      "cycle": 62,
+      "started_at": "2026-09-28T12:56:07+02:00",
+      "ended_at": "2026-09-28T13:05:22+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 554.5
+    },
+    {
+      "cycle": 63,
+      "started_at": "2026-09-28T13:05:52+02:00",
+      "ended_at": "2026-09-28T13:07:07+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 74.9
+    },
+    {
+      "cycle": 64,
+      "started_at": "2026-09-28T13:07:37+02:00",
+      "ended_at": "2026-09-28T13:13:49+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 372.7
+    },
+    {
+      "cycle": 65,
+      "started_at": "2026-09-28T13:14:19+02:00",
+      "ended_at": "2026-09-28T13:16:49+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": true,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 149.4
+    },
+    {
+      "cycle": 66,
+      "started_at": "2026-09-28T13:31:52+02:00",
+      "ended_at": "2026-09-28T13:34:29+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": true,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 157.2
+    },
+    {
+      "cycle": 67,
+      "started_at": "2026-09-28T13:49:32+02:00",
+      "ended_at": "2026-09-28T13:52:17+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": true,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 165.2
+    },
+    {
+      "cycle": 68,
+      "started_at": "2026-09-28T14:07:20+02:00",
+      "ended_at": "2026-09-28T14:08:30+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": true,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 70.6
+    },
+    {
+      "cycle": 69,
+      "started_at": "2026-09-28T14:23:33+02:00",
+      "ended_at": "2026-09-28T14:26:12+02:00",
+      "success": false,
+      "retrospective": true,
+      "summary_due": true,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 159.3
+    },
+    {
+      "cycle": 70,
+      "started_at": "2026-09-28T17:06:30+02:00",
+      "ended_at": "2026-09-28T17:11:10+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 1,
+      "seconds": 280.5
+    },
+    {
+      "cycle": 72,
+      "started_at": "2026-09-28T17:26:10+02:00",
+      "ended_at": "2026-09-28T18:13:47+02:00",
+      "success": false,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 0,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 2857.3
+    },
+    {
+      "cycle": 74,
+      "started_at": "2026-09-28T18:29:47+02:00",
+      "ended_at": "2026-09-28T18:44:35+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 888.4
+    },
+    {
+      "cycle": 75,
+      "started_at": "2026-09-28T18:53:25+02:00",
+      "ended_at": "2026-09-28T19:03:47+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 621.4
+    },
+    {
+      "cycle": 76,
+      "started_at": "2026-09-28T19:23:47+02:00",
+      "ended_at": "2026-09-28T19:38:27+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 879.9
+    },
+    {
+      "cycle": 77,
+      "started_at": "2026-09-28T21:31:24+02:00",
+      "ended_at": "2026-09-28T21:37:11+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 346.7
+    },
+    {
+      "cycle": 78,
+      "started_at": "2026-09-28T21:47:27+02:00",
+      "ended_at": "2026-09-28T22:00:35+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 788.2
+    },
+    {
+      "cycle": 79,
+      "started_at": "2026-09-28T22:05:10+02:00",
+      "ended_at": "2026-09-28T22:26:10+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 1260.6
+    },
+    {
+      "cycle": 80,
+      "started_at": "2026-09-28T22:38:15+02:00",
+      "ended_at": "2026-09-28T22:47:35+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 560.3
+    },
+    {
+      "cycle": 81,
+      "started_at": "2026-09-28T22:52:14+02:00",
+      "ended_at": "2026-09-28T23:07:22+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 908.4
+    },
+    {
+      "cycle": 82,
+      "started_at": "2026-09-28T23:11:34+02:00",
+      "ended_at": "2026-09-28T23:19:34+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 4,
+      "returncode": 0,
+      "seconds": 480.5
+    },
+    {
+      "cycle": 83,
+      "started_at": "2026-09-28T23:28:02+02:00",
+      "ended_at": "2026-09-28T23:47:50+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 10,
+      "returncode": 0,
+      "seconds": 1188.4
+    },
+    {
+      "cycle": 84,
+      "started_at": "2026-09-28T23:52:26+02:00",
+      "ended_at": "2026-09-29T00:03:29+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 6,
+      "returncode": 0,
+      "seconds": 663.0
+    },
+    {
+      "cycle": 85,
+      "started_at": "2026-09-29T00:07:34+02:00",
+      "ended_at": "2026-09-29T00:14:50+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 435.7
+    },
+    {
+      "cycle": 86,
+      "started_at": "2026-09-29T00:23:10+02:00",
+      "ended_at": "2026-09-29T00:33:18+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 608.6
+    },
+    {
+      "cycle": 87,
+      "started_at": "2026-09-29T00:37:25+02:00",
+      "ended_at": "2026-09-29T00:52:59+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 934.5
+    },
+    {
+      "cycle": 88,
+      "started_at": "2026-09-29T00:57:28+02:00",
+      "ended_at": "2026-09-29T01:10:00+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 4,
+      "returncode": 0,
+      "seconds": 752.8
+    },
+    {
+      "cycle": 89,
+      "started_at": "2026-09-29T01:20:00+02:00",
+      "ended_at": "2026-09-29T01:39:29+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 1168.2
+    },
+    {
+      "cycle": 90,
+      "started_at": "2026-09-29T01:42:14+02:00",
+      "ended_at": "2026-09-29T01:48:59+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 404.6
+    },
+    {
+      "cycle": 91,
+      "started_at": "2026-09-29T01:50:58+02:00",
+      "ended_at": "2026-09-29T01:56:53+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 4,
+      "returncode": 0,
+      "seconds": 354.9
+    },
+    {
+      "cycle": 92,
+      "started_at": "2026-09-29T02:04:52+02:00",
+      "ended_at": "2026-09-29T02:11:24+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 391.9
+    },
+    {
+      "cycle": 93,
+      "started_at": "2026-09-29T02:18:30+02:00",
+      "ended_at": "2026-09-29T02:32:53+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 862.8
+    },
+    {
+      "cycle": 94,
+      "started_at": "2026-09-29T02:40:36+02:00",
+      "ended_at": "2026-09-29T02:51:37+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 661.7
+    },
+    {
+      "cycle": 95,
+      "started_at": "2026-09-29T03:03:32+02:00",
+      "ended_at": "2026-09-29T03:16:32+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 779.6
+    },
+    {
+      "cycle": 96,
+      "started_at": "2026-09-29T03:20:35+02:00",
+      "ended_at": "2026-09-29T03:34:26+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 830.8
+    },
+    {
+      "cycle": 97,
+      "started_at": "2026-09-29T03:41:36+02:00",
+      "ended_at": "2026-09-29T03:54:47+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 791.9
+    },
+    {
+      "cycle": 98,
+      "started_at": "2026-09-29T04:12:04+02:00",
+      "ended_at": "2026-09-29T04:38:51+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 1607.1
+    },
+    {
+      "cycle": 99,
+      "started_at": "2026-09-29T04:43:57+02:00",
+      "ended_at": "2026-09-29T04:54:10+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 612.6
+    },
+    {
+      "cycle": 100,
+      "started_at": "2026-09-29T05:05:55+02:00",
+      "ended_at": "2026-09-29T05:16:41+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 646.1
+    },
+    {
+      "cycle": 101,
+      "started_at": "2026-09-29T05:33:50+02:00",
+      "ended_at": "2026-09-29T05:46:40+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 770.4
+    },
+    {
+      "cycle": 102,
+      "started_at": "2026-09-29T05:51:55+02:00",
+      "ended_at": "2026-09-29T06:00:20+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 504.6
+    },
+    {
+      "cycle": 103,
+      "started_at": "2026-09-29T06:04:34+02:00",
+      "ended_at": "2026-09-29T06:12:57+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 502.5
+    },
+    {
+      "cycle": 104,
+      "started_at": "2026-09-29T06:27:57+02:00",
+      "ended_at": "2026-09-29T06:46:55+02:00",
+      "success": true,
+      "retrospective": true,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 2,
+      "returncode": 0,
+      "seconds": 1137.9
+    },
+    {
+      "cycle": 105,
+      "started_at": "2026-09-29T06:51:59+02:00",
+      "ended_at": "2026-09-29T06:58:01+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 362.7
+    },
+    {
+      "cycle": 106,
+      "started_at": "2026-09-29T07:06:39+02:00",
+      "ended_at": "2026-09-29T07:16:36+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 1,
+      "returncode": 0,
+      "seconds": 597.0
+    },
+    {
+      "cycle": 107,
+      "started_at": "2026-09-29T07:29:38+02:00",
+      "ended_at": "2026-09-29T07:42:02+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 5,
+      "returncode": 0,
+      "seconds": 743.8
+    },
+    {
+      "cycle": 108,
+      "started_at": "2026-09-29T07:53:14+02:00",
+      "ended_at": "2026-09-29T08:10:41+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 1046.9
+    },
+    {
+      "cycle": 109,
+      "started_at": "2026-09-29T08:15:15+02:00",
+      "ended_at": "2026-09-29T08:31:15+02:00",
+      "success": true,
+      "retrospective": false,
+      "summary_due": false,
+      "notebook_entries": 1,
+      "evaluations": 0,
+      "returncode": 0,
+      "seconds": 960.4
+    }
+  ],
+  "summary_written_at_entry": 53,
+  "last_report_slot": "2026-09-29 08:00",
+  "reports": [
+    {
+      "slot": "2026-09-28 08:00",
+      "by_agent": true,
+      "returncode": 0
+    },
+    {
+      "slot": "2026-09-28 20:00",
+      "by_agent": true,
+      "returncode": 0
+    },
+    {
+      "slot": "2026-09-29 08:00",
+      "by_agent": true,
+      "returncode": 0
+    }
+  ],
+  "alert_active": false,
+  "rate_limit_streak": 0,
+  "exam_v2_from_cycle": 70,
+  "events": [
+    {
+      "cycle": 69,
+      "event": "épreuve v2 : le record de 6,73:1 est invalidé ; les résultats v1 sont archivés et ne comptent plus"
+    },
+    {
+      "cycle": 69,
+      "event": "épreuve v3 : aucune masse déclarée ; catalogue sourcé (catalog_add), pièces sur mesure (part_build, part_fem), squelette compilé (assembly_compile) ; seul un dossier compilé passe run_exam"
+    },
+    {
+      "cycle": 75,
+      "event": "bancs d'essai (scenario de run_exam), température des moteurs, résonance des bras, éclaireur (field_notes, demandes d'essai dans user_inbox)"
+    }
+  ],
+  "rate_limit_events": 12,
+  "scout_sessions": 11,
+  "scout_last_at": 49,
+  "scout_log": [
+    {
+      "session": 1,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-28T21:31:24+02:00"
+    },
+    {
+      "session": 2,
+      "mode": "revue",
+      "returncode": 0,
+      "at": "2026-09-28T22:38:15+02:00"
+    },
+    {
+      "session": 3,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-28T23:28:02+02:00"
+    },
+    {
+      "session": 4,
+      "mode": "revue",
+      "returncode": 0,
+      "at": "2026-09-29T00:23:10+02:00"
+    },
+    {
+      "session": 5,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-29T01:20:00+02:00"
+    },
+    {
+      "session": 6,
+      "mode": "revue",
+      "returncode": 0,
+      "at": "2026-09-29T02:04:52+02:00"
+    },
+    {
+      "session": 7,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-29T03:03:32+02:00"
+    },
+    {
+      "session": 8,
+      "mode": "revue",
+      "returncode": 0,
+      "at": "2026-09-29T04:12:04+02:00"
+    },
+    {
+      "session": 9,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-29T05:33:50+02:00"
+    },
+    {
+      "session": 10,
+      "mode": "revue",
+      "returncode": 0,
+      "at": "2026-09-29T06:27:57+02:00"
+    },
+    {
+      "session": 11,
+      "mode": "veille",
+      "returncode": 0,
+      "at": "2026-09-29T07:29:38+02:00"
+    }
+  ]
+}

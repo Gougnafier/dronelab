@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "landing_gear_v3",
+  "load_case": "atterrissage",
+  "part_hash": "a4ca877575",
+  "von_mises_max_mpa": 5.25,
+  "max_displacement_mm": 0.0496,
+  "nodes": 111487,
+  "elements": 64901,
+  "fixed_nodes": 40384,
+  "loaded_nodes": 33094,
+  "mesh_mm": 4.0,
+  "seconds": 7.1,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 52.57,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Lance l'ingénieur autonome : superviseur + sessions Hermes (profil dédié) + serveur MCP du dépôt.
 
-  python scripts/run_agent.py --product heavylift --hermes-cmd dronelab --max-cycles 1
-  python scripts/run_agent.py --product heavylift --hermes-cmd dronelab --notify discord   # en continu
+  python scripts/run_agent.py --product lift_challenge --hermes-cmd dronelab --max-cycles 1
+  python scripts/run_agent.py --product lift_challenge --hermes-cmd dronelab --notify discord   # en continu
 
 Arrêt propre : créer runs/<produit>/STOP. Reprise : relancer la même commande.
 """
@@ -22,7 +22,7 @@ from drone_agent.products import get_product  # noqa: E402
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--product", default="heavylift")
+    parser.add_argument("--product", default="lift_challenge")
     parser.add_argument("--hermes-cmd", default="dronelab", help="commande Hermes (alias du profil)")
     parser.add_argument("--max-cycles", type=int)
     parser.add_argument("--max-cycles-per-day", type=int, default=0, help="0 = aucune limite")
@@ -35,6 +35,7 @@ def main() -> int:
     parser.add_argument("--auditor-cmd", default="", help="profil Hermes du vérificateur (ex. dronecheck) ; vide = sans audit")
     parser.add_argument("--scout-cmd", default="", help="profil Hermes de l'éclaireur (ex. dronescout) ; vide = sans veille")
     parser.add_argument("--scout-every", type=int, default=3, help="une session d'éclaireur tous les N cycles réussis")
+    parser.add_argument("--await-mission", action="store_true", help="course propre : attendre la mission sur Discord")
     args = parser.parse_args()
 
     os.environ["DRONE_AGENT_NOTIFY_TARGET"] = args.notify
@@ -49,7 +50,7 @@ def main() -> int:
                     max_turns=args.max_turns, cycle_timeout_s=args.cycle_timeout, pause_s=args.pause,
                     max_cycles=args.max_cycles, max_cycles_per_day=args.max_cycles_per_day or None,
                     report_now=args.report_now, auditor_cmd=args.auditor_cmd or None,
-                    scout_cmd=args.scout_cmd or None, scout_every=args.scout_every)
+                    scout_cmd=args.scout_cmd or None, scout_every=args.scout_every, await_mission=args.await_mission)
     Supervisor(config, reporter=reporter).run()
     return 0
 

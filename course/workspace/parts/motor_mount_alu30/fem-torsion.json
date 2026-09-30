@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "motor_mount_alu30",
+  "load_case": "torsion",
+  "part_hash": "8d3131ad15",
+  "von_mises_max_mpa": 0.08,
+  "max_displacement_mm": 0.0001,
+  "nodes": 60573,
+  "elements": 31967,
+  "fixed_nodes": 30266,
+  "loaded_nodes": 8006,
+  "mesh_mm": 1.62,
+  "seconds": 2.9,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 276.0,
+  "sf": 3450.0,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

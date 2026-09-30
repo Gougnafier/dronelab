@@ -1,0 +1,36 @@
+{
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "mount",
+  "interfaces": [
+    {"name": "tube", "type": "tube_socket", "params": {"tube_od_m": 0.030, "anti_rotation": "cross_bolt_M4_vertical + NordLock_M4 + Loctite_243 + torque_2.5_Nm"}},
+    {"name": "motor", "type": "motor_bolts", "params": {"pattern_mm": 25}}
+  ],
+  "load_cases": [
+    {
+      "name": "poussee_max",
+      "fixed_box_mm": [-60, -15, -15, 0, 15, 15],
+      "load_box_mm": [-12, -12, 15, 12, 12, 18],
+      "force_n": [0, 0, 283]
+    },
+    {
+      "name": "couple",
+      "fixed_box_mm": [-60, -15, -15, 0, 15, 15],
+      "load_box_mm": [-12, -12, 15, 12, 12, 18],
+      "force_n": [0, 300, 0]
+    },
+    {
+      "name": "choc",
+      "fixed_box_mm": [-60, -15, -15, 0, 15, 15],
+      "load_box_mm": [-12, -12, 15, 12, 12, 18],
+      "force_n": [0, 300, 425]
+    },
+    {
+      "name": "torsion",
+      "fixed_box_mm": [-60, -15, -15, 0, 15, 15],
+      "load_box_mm": [-12, -12, 15, 12, 12, 18],
+      "force_n": [0, 509, 0]
+    }
+  ],
+  "heat": {"heat_w": 34}
+}

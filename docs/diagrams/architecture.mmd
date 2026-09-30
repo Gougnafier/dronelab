@@ -1,0 +1,14 @@
+flowchart TB
+    USER(["Humain sur Discord"]) <--> DESK["Interlocuteur · dronedesk"]
+    DESK -->|"mission, consignes"| INBOX[("Boîte de réception")]
+    SUP["Superviseur Python<br/>boucle codée en dur"]
+    SUP -->|"à chaque cycle,<br/>contexte neuf"| ENG["Ingénieur · dronelab"]
+    SUP -->|"après chaque cycle"| VER["Vérificateur · dronecheck"]
+    SUP -->|"tous les 3 cycles"| SCOUT["Éclaireur · dronescout"]
+    SUP -->|"records avec vidéo,<br/>rapports 8 h et 20 h, alertes"| USER
+    INBOX --> ENG
+    SCOUT -->|"demandes d'essai"| INBOX
+    ENG & VER & SCOUT & DESK --> MCP["Serveur d'outils MCP<br/>outils filtrés par rôle,<br/>chaque appel journalisé"]
+    MCP --> WORK["Atelier<br/>catalogue · CAO · assemblage"]
+    MCP -->|"SSH"| GPU["RTX 5090<br/>vol MuJoCo · éléments finis CalculiX"]
+    MCP <--> RUN[("Fichiers de la course<br/>cahier, résultats, audits,<br/>notes de terrain, télémétrie")]

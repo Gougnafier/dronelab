@@ -1,0 +1,198 @@
+{
+  "ok": true,
+  "assembly": "a2d_hexa_mn1118_stagger",
+  "design_dir": "designs/a2d_hexa_mn1118_stagger",
+  "issues": [],
+  "near_limits": [
+    "décharge batterie (C) : 25.0 pour un plafond de 25.0"
+  ],
+  "aircraft_mass_kg": 24.059,
+  "masses_by_family_kg": {
+    "motor": 7.02,
+    "battery": 7.35,
+    "esc": 2.82,
+    "prop": 2.46,
+    "arm": 1.024,
+    "wiring": 0.735,
+    "avionics": 0.406,
+    "gear": 1.016,
+    "frame": 1.043
+  },
+  "minimum_masses_kg": {
+    "esc": 2.044,
+    "wiring": 0.681,
+    "avionics": 0.4,
+    "gear": 0.962,
+    "frame": 0.962
+  },
+  "max_static_thrust_n": 1650.6,
+  "max_payload_for_thrust_margin_kg": 81.1,
+  "arms": {
+    "max_stress_mpa": 147.5,
+    "allowed_mpa": 266.7,
+    "longest_arm_m": 0.68
+  },
+  "rotors": [
+    {
+      "site": "rotor_p0",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    },
+    {
+      "site": "rotor_p1",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    },
+    {
+      "site": "rotor_p2",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    },
+    {
+      "site": "rotor_p3",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    },
+    {
+      "site": "rotor_p4",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    },
+    {
+      "site": "rotor_p5",
+      "diameter_m": 1.018,
+      "power_w": 5679.0,
+      "power_factor": 1.046,
+      "max_thrust_n": 275.1,
+      "coaxial": true
+    }
+  ],
+  "battery": {
+    "energy_wh": 1140,
+    "max_power_w": 28500,
+    "mass_kg": 7.35
+  },
+  "resonance": [
+    {
+      "rotor": "rotor_p0",
+      "arm": "arm0",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm0 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    },
+    {
+      "rotor": "rotor_p1",
+      "arm": "arm1",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm1 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    },
+    {
+      "rotor": "rotor_p2",
+      "arm": "arm2",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm2 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    },
+    {
+      "rotor": "rotor_p3",
+      "arm": "arm3",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm3 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    },
+    {
+      "rotor": "rotor_p4",
+      "arm": "arm4",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm4 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    },
+    {
+      "rotor": "rotor_p5",
+      "arm": "arm5",
+      "arm_length_m": 0.68,
+      "f1_hz": 15.2,
+      "rotation_1p_hz": [
+        17.3,
+        36.2
+      ],
+      "blade_pass_2p_hz": [
+        34.6,
+        72.3
+      ],
+      "method": "poutre encastrée + masse en bout ; vitesse de rotation par C_T = 0,10 (ordre de grandeur)",
+      "warning": "résonance probable : bras arm5 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+    }
+  ],
+  "warnings": [
+    "résonance probable : bras arm0 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %",
+    "résonance probable : bras arm1 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %",
+    "résonance probable : bras arm2 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %",
+    "résonance probable : bras arm3 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %",
+    "résonance probable : bras arm4 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %",
+    "résonance probable : bras arm5 f1 ≈ 15 Hz dans la bande de rotation 17–36 Hz (1P) ou 35–72 Hz (2P) à ±15 %"
+  ],
+  "image": "runs/lift_challenge/workspace/designs/a2d_hexa_mn1118_stagger/view.png",
+  "usda": "runs/lift_challenge/workspace/designs/a2d_hexa_mn1118_stagger/a2d_hexa_mn1118_stagger.usda"
+}

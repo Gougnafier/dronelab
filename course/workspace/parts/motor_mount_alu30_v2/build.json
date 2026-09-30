@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "part": "motor_mount_alu30_v2",
+  "hash": "89dccda8de",
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "mount",
+  "size_mm": [
+    35.0,
+    40.0,
+    50.0
+  ],
+  "volume_cm3": 13.79,
+  "com_mm": [
+    0.02902771317144453,
+    1.1698633367601263e-07,
+    4.578201842178587
+  ],
+  "mass_kg": 0.0372,
+  "thermal": {
+    "heat_w": 34,
+    "fin_efficiency": 0.956,
+    "estimated_interface_temp_c": 99.3,
+    "max_service_temp_c": 150,
+    "method": "modèle d'ailette (convection h = 40 W/m²K), ordre de grandeur"
+  },
+  "issues": [],
+  "fem_required": [
+    "poussee_max",
+    "couple",
+    "choc",
+    "torsion"
+  ],
+  "fem_done": {},
+  "image": "runs/lift_challenge/workspace/parts/motor_mount_alu30_v2/view.png",
+  "solids": 1,
+  "volume_mm3": 13787.320153811139,
+  "area_mm2": 12833.999962864465,
+  "inertia_mm5": [
+    3950055.116155629,
+    0.016622245710773566,
+    6034.248077630861,
+    0.016622245710773566,
+    4643822.906022858,
+    0.00879512130237344,
+    6034.248077630861,
+    0.00879512130237344,
+    4508454.830003888
+  ],
+  "bbox_mm": [
+    -25.0000001,
+    -20.0000001,
+    -17.0000001,
+    25.0000001,
+    20.0000001,
+    18.0000001
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "v3_hexa52_5.5kW_ultimate",
+  "rotors": [
+    {
+      "site": "rotor_0",
+      "spin": 1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    },
+    {
+      "site": "rotor_1",
+      "spin": -1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    },
+    {
+      "site": "rotor_2",
+      "spin": 1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    },
+    {
+      "site": "rotor_3",
+      "spin": -1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    },
+    {
+      "site": "rotor_4",
+      "spin": 1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    },
+    {
+      "site": "rotor_5",
+      "spin": -1,
+      "prop_diameter_m": 1.32,
+      "motor_max_power_w": 5500
+    }
+  ],
+  "battery": {
+    "energy_wh": 4051.0,
+    "max_power_w": 101275.0,
+    "mass_kg": 13.508
+  },
+  "cruise_speed_m_s": 15.0,
+  "components": [
+    {
+      "name": "motor",
+      "mass_kg": 1.1,
+      "count": 6,
+      "source_url": "https://store.tmotor.com/goods.php?id=618",
+      "note": "T-Motor U15 KV100 at 5.5kW, 1.10kg at 5000 W/kg limit"
+    },
+    {
+      "name": "propeller",
+      "mass_kg": 0.62,
+      "count": 6,
+      "source_url": "https://store.tmotor.com/goods.php?id=618",
+      "note": "T-Motor P52 carbon fiber, estimated slightly heavier than P50"
+    },
+    {
+      "name": "arm_tube",
+      "mass_kg": 0.11,
+      "count": 6,
+      "source_url": "https://www.rockwestcomposites.com/carbon-fiber-tubes",
+      "note": "Carbon tube 18mm OD, 15mm ID, 0.71m (ultra-thin wall)"
+    },
+    {
+      "name": "center_plates",
+      "mass_kg": 0.2,
+      "count": 1,
+      "source_url": "",
+      "note": "Optimized CFRP plates top/bottom, hex layout, maximally thinned"
+    },
+    {
+      "name": "avionics",
+      "mass_kg": 0.15,
+      "count": 1,
+      "source_url": "",
+      "note": "Ultra-miniaturized FC, 6x ESC, GPS, radio, PDB, wiring"
+    },
+    {
+      "name": "payload_attach",
+      "mass_kg": 0.1,
+      "count": 1,
+      "source_url": "",
+      "note": "Quick-release hook"
+    },
+    {
+      "name": "battery_pack",
+      "mass_kg": 13.508,
+      "count": 1,
+      "source_url": "https://www.tattu.com/",
+      "note": "Tattu 12S high-capacity, ~4051 Wh, 13.508kg pack level at 299.9 Wh/kg limit"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "part": "release_hook",
+  "load_case": "charge_laterale",
+  "part_hash": "d0f89099f2",
+  "von_mises_max_mpa": 18.5,
+  "max_displacement_mm": 70038889587.7469,
+  "nodes": 43500,
+  "elements": 26154,
+  "fixed_nodes": 25520,
+  "loaded_nodes": 5703,
+  "mesh_mm": 2.42,
+  "seconds": 2.5,
+  "note": "contrainte max hors d'une bande de 2 mailles autour de la zone encastrée (singularité)",
+  "ran_on": "rtx5090",
+  "usable_strength_mpa": 503.0,
+  "sf": 27.19,
+  "sf_required": 1.5,
+  "sf_ok": true
+}

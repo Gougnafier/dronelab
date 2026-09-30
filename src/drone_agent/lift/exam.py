@@ -34,6 +34,12 @@ def exam_spec() -> dict:
 
 
 # --- dossier de conception -------------------------------------------------------------------------
+def load_assets(design_dir: Path) -> dict[str, bytes]:
+    """Maillages référencés en relatif par le dossier compilé (meshes/*.stl), pour MuJoCo en mémoire."""
+    folder = Path(design_dir) / "meshes"
+    return {f"meshes/{f.name}": f.read_bytes() for f in sorted(folder.glob("*.stl"))} if folder.exists() else {}
+
+
 def load_package(design_dir: Path) -> tuple[str, dict]:
     design_dir = Path(design_dir)
     xml_path, json_path = design_dir / "drone.xml", design_dir / "design.json"
@@ -123,7 +129,8 @@ def build_model_xml(drone_xml: str, payload_kg: float, spec: dict) -> str:
     return ET.tostring(root, encoding="unicode")
 
 
-def check_package(drone_xml: str, design: dict, spec: dict | None = None, payload_kg: float | None = None) -> dict:
+def check_package(drone_xml: str, design: dict, spec: dict | None = None, payload_kg: float | None = None,
+                  assets: dict[str, bytes] | None = None) -> dict:
     """Contrôles statiques : structure du modèle, masses minimales, hélices, bras, batterie, plausibilité,
     marge de poussée (pour la charge donnée). Sans simulation."""
     import mujoco
@@ -131,7 +138,7 @@ def check_package(drone_xml: str, design: dict, spec: dict | None = None, payloa
     spec = spec or exam_spec()
     issues, warnings, near_limits = [], [], []
     try:
-        model = mujoco.MjModel.from_xml_string(build_model_xml(drone_xml, 0.0, spec))
+        model = mujoco.MjModel.from_xml_string(build_model_xml(drone_xml, 0.0, spec), assets or {})
     except Exception as exc:  # MJCF invalide
         return {"ok": False, "issues": [f"MJCF invalide : {exc}"], "warnings": [], "near_limits": []}
     data = mujoco.MjData(model)
@@ -398,7 +405,7 @@ def _vee(m):
 
 
 def run_exam(drone_xml: str, design: dict, payload_kg: float, cruise_speed: float | None = None,
-             spec: dict | None = None, scenario: str = "nominal") -> dict:
+             spec: dict | None = None, scenario: str = "nominal", assets: dict[str, bytes] | None = None) -> dict:
     import copy
 
     import mujoco
@@ -425,7 +432,7 @@ def run_exam(drone_xml: str, design: dict, payload_kg: float, cruise_speed: floa
     phys, fail, rules = spec["physics"], spec["failure"], spec["rules"]
     payload_requested = float(payload_kg)
     payload_kg, payload_lb = _payload_stack(payload_kg, spec["rules"]["payload_step_lb"])
-    check = check_package(drone_xml, design, spec, payload_kg=payload_kg)
+    check = check_package(drone_xml, design, spec, payload_kg=payload_kg, assets=assets)
     if not check["ok"]:
         return {"ok": True, "exam_version": spec.get("version", 1), "passed": False,
                 "failure": {"reason": "dossier refusé", "details": check["issues"]}, "check": check, "score": -2.0,
@@ -434,7 +441,7 @@ def run_exam(drone_xml: str, design: dict, payload_kg: float, cruise_speed: floa
     cruise = float(cruise_speed or design.get("cruise_speed_m_s") or spec["mission"]["default_cruise_speed_m_s"])
     cruise = min(max(cruise, 1.0), spec["mission"]["max_cruise_speed_m_s"])
     full_xml = build_model_xml(drone_xml, payload_kg, spec)
-    model = mujoco.MjModel.from_xml_string(full_xml)
+    model = mujoco.MjModel.from_xml_string(full_xml, assets or {})
     data = mujoco.MjData(model)
     drone = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "drone")
     payload = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "payload")
@@ -731,8 +738,11 @@ def main() -> None:
 
     try:
         job = json.loads(sys.stdin.read())
+        import base64
+
+        assets = {name: base64.b64decode(data) for name, data in (job.get("assets") or {}).items()}
         result = run_exam(job["drone_xml"], job["design"], job["payload_kg"], job.get("cruise_speed_m_s"),
-                          scenario=job.get("scenario", "nominal"))
+                          scenario=job.get("scenario", "nominal"), assets=assets)
     except Exception as exc:
         import traceback
 

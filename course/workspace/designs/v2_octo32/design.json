@@ -1,0 +1,110 @@
+{
+  "name": "v2_octo32",
+  "rotors": [
+    {
+      "site": "rotor_0",
+      "spin": 1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_1",
+      "spin": -1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_2",
+      "spin": 1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_3",
+      "spin": -1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_4",
+      "spin": 1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_5",
+      "spin": -1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_6",
+      "spin": 1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    },
+    {
+      "site": "rotor_7",
+      "spin": -1,
+      "prop_diameter_m": 0.813,
+      "motor_max_power_w": 5000.0
+    }
+  ],
+  "battery": {
+    "energy_wh": 2400,
+    "max_power_w": 55000,
+    "mass_kg": 8.0
+  },
+  "cruise_speed_m_s": 12.0,
+  "components": [
+    {
+      "name": "motor",
+      "mass_kg": 1.0,
+      "count": 8,
+      "source_url": "https://store.tmotor.com/goods.php?id=618",
+      "note": "T-Motor U15 KV100 derated to 5kW, ~1.0kg at 5kW/kg limit"
+    },
+    {
+      "name": "propeller",
+      "mass_kg": 0.22,
+      "count": 8,
+      "source_url": "https://store.tmotor.com/goods.php?id=618",
+      "note": "T-Motor P32x10.5 carbon fiber"
+    },
+    {
+      "name": "arm_tube",
+      "mass_kg": 0.15,
+      "count": 8,
+      "source_url": "https://www.rockwestcomposites.com/carbon-fiber-tubes",
+      "note": "Carbon tube 30mm OD, 27mm ID, 1.0m"
+    },
+    {
+      "name": "center_plates",
+      "mass_kg": 0.9,
+      "count": 1,
+      "source_url": "",
+      "note": "CFRP plates top/bottom, slightly larger"
+    },
+    {
+      "name": "avionics",
+      "mass_kg": 0.45,
+      "count": 1,
+      "source_url": "",
+      "note": "FC, 8x ESC, GPS, radio, PDB, wiring"
+    },
+    {
+      "name": "payload_attach",
+      "mass_kg": 0.1,
+      "count": 1,
+      "source_url": "",
+      "note": "Quick-release hook"
+    },
+    {
+      "name": "battery_pack",
+      "mass_kg": 8.0,
+      "count": 1,
+      "source_url": "https://www.tattu.com/",
+      "note": "Tattu 12S 28000mAh 25C, ~2400 Wh, 8kg pack level"
+    }
+  ]
+}

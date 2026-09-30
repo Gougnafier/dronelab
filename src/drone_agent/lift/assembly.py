@@ -22,6 +22,7 @@ import hashlib
 import json
 import math
 import os
+import shutil
 import struct
 import subprocess
 import sys
@@ -52,6 +53,8 @@ def compile_assembly(root: Path, name: str) -> dict:
     asm = json.loads(src.read_text(encoding="utf-8"))
     cat = catalog.entries(root)
     issues, geoms, sites, assets, components = [], [], [], [], []
+    out = ws / "designs" / name
+    mesh_files: dict[str, Path] = {}
     by_id: dict[str, dict] = {}
 
     for inst in asm.get("instances", []):
@@ -133,7 +136,8 @@ def compile_assembly(root: Path, name: str) -> dict:
                     issues.append(f"{iid} : pièce {key}, cas « {case} » : facteur de sécurité {status['sf']} insuffisant")
             prefix = ROLE_PREFIX.get(built.get("role"), "misc")
             asset = f"mesh_{iid}"
-            assets.append(f'<mesh name="{asset}" file="{pdir / "part.stl"}" scale="0.001 0.001 0.001"/>')
+            mesh_files[f"{key}.stl"] = pdir / "part.stl"
+            assets.append(f'<mesh name="{asset}" file="meshes/{key}.stl" scale="0.001 0.001 0.001"/>')
             geoms.append(f'<geom name="{prefix}_{iid}" type="mesh" mesh="{asset}" pos="{_fmt(pos)}" euler="{_fmt(euler)}" '
                          f'mass="{built["mass_kg"]:.5f}" rgba="{COLORS[prefix]}"/>')
             spec = json.loads((pdir / "part.json").read_text(encoding="utf-8"))
@@ -206,8 +210,13 @@ def compile_assembly(root: Path, name: str) -> dict:
         *[f"      {g}" for g in geoms], *[f"      {s}" for s in sites],
         f'      <site name="payload_attach" pos="{_fmt(attach)}"/>',
         "    </body>", "  </worldbody>", "</mujoco>", ""])
-    out = ws / "designs" / name
     out.mkdir(parents=True, exist_ok=True)
+    if (out / "meshes").exists():
+        shutil.rmtree(out / "meshes")
+    if mesh_files:
+        (out / "meshes").mkdir()
+        for filename, source in mesh_files.items():
+            shutil.copy(source, out / "meshes" / filename)
     (out / "drone.xml").write_text(xml, encoding="utf-8")
     design = {
         "name": name, "rotors": rotors,
@@ -221,10 +230,12 @@ def compile_assembly(root: Path, name: str) -> dict:
         "assembly_sha1": hashlib.sha1(src.read_bytes()).hexdigest(),
     }
     (out / "design.json").write_text(json.dumps(design, indent=2, ensure_ascii=False), encoding="utf-8")
-    check = check_package(xml, design)
+    from .exam import load_assets
+
+    check = check_package(xml, design, assets=load_assets(out))
     resonance = resonance_analysis(by_id, rotors, check.get("aircraft_mass_kg") or 0.0,
                                    check.get("max_payload_for_thrust_margin_kg") or 0.0)
-    usda = write_usda(xml, out / f"{name}.usda")
+    usda = write_usda(xml, out / f"{name}.usda", out)
     image = render_design(out)
     report = {"ok": check["ok"], "assembly": name, "design_dir": f"designs/{name}", "issues": check["issues"],
               "near_limits": check.get("near_limits"), "aircraft_mass_kg": check.get("aircraft_mass_kg"),
@@ -286,7 +297,8 @@ def render_design(folder: Path) -> str | None:
             "rgb2=\".82 .86 .9\" width=\"32\" height=\"32\"/>', 1)\n"
             "xml = xml.replace('<compiler angle=\"degree\"/>', '<compiler angle=\"degree\"/><visual><global offwidth=\"1200\" "
             "offheight=\"800\"/><headlight ambient=\".35 .35 .35\"/></visual>', 1)\n"
-            "m = mujoco.MjModel.from_xml_string(xml); d = mujoco.MjData(m); mujoco.mj_forward(m, d)\n"
+            "import pathlib; scene = pathlib.Path(sys.argv[1]).with_name('view_scene.xml'); scene.write_text(xml)\n"
+            "m = mujoco.MjModel.from_xml_path(str(scene)); d = mujoco.MjData(m); mujoco.mj_forward(m, d)\n"
             "b = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_BODY, 'drone')\n"
             "r = mujoco.Renderer(m, 800, 1200); c = mujoco.MjvCamera(); c.lookat[:] = d.subtree_com[b]\n"
             "c.distance = 2.6 * max(m.geom_rbound[m.geom_bodyid == b].max(), float(abs(d.geom_xpos[m.geom_bodyid == b] - d.subtree_com[b]).max()) + 0.3)\n"
@@ -306,7 +318,7 @@ def _read_stl(path: Path):
     return tris["v"].reshape(-1, 3)
 
 
-def write_usda(xml: str, path: Path) -> Path:
+def write_usda(xml: str, path: Path, base: Path | None = None) -> Path:
     """OpenUSD ASCII de l'assemblage compilé : cylindres, boîtes et maillages des pièces sur mesure, masses incluses."""
     import xml.etree.ElementTree as ET
 
@@ -350,7 +362,8 @@ def write_usda(xml: str, path: Path) -> Path:
             lines += ["        double size = 1", *xform, f"        float3 xformOp:scale = ({2 * size[0]:.5f}, {2 * size[1]:.5f}, {2 * size[2]:.5f})",
                       '        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]', "    }"]
         elif t == "mesh":
-            verts = _read_stl(Path(meshes[g.get("mesh")])) * 0.001
+            mesh_path = Path(meshes[g.get("mesh")])
+            verts = _read_stl(mesh_path if mesh_path.is_absolute() or base is None else base / mesh_path) * 0.001
             points = ", ".join(f"({v[0]:.5f}, {v[1]:.5f}, {v[2]:.5f})" for v in verts)
             lines += [h.replace("{kind}", "Mesh") for h in head]
             lines += [f"        point3f[] points = [{points}]",

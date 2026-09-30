@@ -153,8 +153,10 @@ def project() -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--ping", action="store_true", help="une requête minimale à chaque modèle")
+    parser.add_argument("--before-launch", action="store_true", help="ne pas exiger que le service de l'agent tourne")
     args = parser.parse_args()
-    for step in (project, profiles, services, remote, local_stack):
+    steps = (project, profiles, remote, local_stack) if args.before_launch else (project, profiles, services, remote, local_stack)
+    for step in steps:
         try:
             step(args.ping) if step is profiles else step()
         except Exception as exc:

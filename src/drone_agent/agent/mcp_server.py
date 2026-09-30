@@ -1,7 +1,7 @@
 """Serveur MCP (stdio) qui expose les outils de l'agent à Hermes.
 
-  python -m drone_agent.agent.mcp_server --product heavylift --role engineer
-  python -m drone_agent.agent.mcp_server --product heavylift --role desk
+  python -m drone_agent.agent.mcp_server --product lift_challenge --role engineer
+  python -m drone_agent.agent.mcp_server --product lift_challenge --role desk
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ def build(product: str, role: str, root: Path | None = None) -> MCPServer:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--product", default="heavylift")
+    parser.add_argument("--product", default="lift_challenge")
     parser.add_argument("--role", choices=["engineer", "desk", "auditor", "scout"], default="engineer")
     parser.add_argument("--root", type=Path, help="dossier du projet (défaut : runs/<produit>)")
     args = parser.parse_args()

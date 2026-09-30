@@ -1,0 +1,24 @@
+{
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "frame",
+  "interfaces": [
+    {"name": "tube", "type": "tube_socket", "params": {"tube_od_m": 0.030, "anti_rotation": "cross_bolt_M4_vertical"}},
+    {"name": "bolt_pattern", "type": "bolt_pattern", "params": {"pattern_mm": 44, "bolt_diameter_mm": 5}}
+  ],
+  "load_cases": [
+    {
+      "name": "poussee_bras",
+      "fixed_box_mm": [-45, -45, -6, 45, 45, 6],
+      "load_box_mm": [75, -30, -6, 105, 30, 6],
+      "force_n": [0, 0, 283]
+    },
+    {
+      "name": "charge_suspendue",
+      "fixed_box_mm": [40, -20, -6, 105, 20, 6],
+      "load_box_mm": [-30, -30, -6, 30, 30, 0],
+      "force_n": [0, 0, -1112]
+    }
+  ],
+  "heat": {"heat_w": 0}
+}

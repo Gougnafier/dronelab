@@ -1,0 +1,356 @@
+{
+  "name": "a2_hexa_mn1118_stagger",
+  "rotors": [
+    {
+      "site": "rotor_p0",
+      "spin": 1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m0",
+      "prop_id": "p0"
+    },
+    {
+      "site": "rotor_p1",
+      "spin": -1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m1",
+      "prop_id": "p1"
+    },
+    {
+      "site": "rotor_p2",
+      "spin": 1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m2",
+      "prop_id": "p2"
+    },
+    {
+      "site": "rotor_p3",
+      "spin": -1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m3",
+      "prop_id": "p3"
+    },
+    {
+      "site": "rotor_p4",
+      "spin": 1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m4",
+      "prop_id": "p4"
+    },
+    {
+      "site": "rotor_p5",
+      "spin": -1,
+      "prop_diameter_m": 1.018,
+      "motor_max_power_w": 5679,
+      "motor_peak_power_w": null,
+      "motor_mass_kg": 1.17,
+      "motor_id": "m5",
+      "prop_id": "p5"
+    }
+  ],
+  "battery": {
+    "energy_wh": 1140,
+    "max_power_w": 28500,
+    "mass_kg": 7.35
+  },
+  "structure": {
+    "arm_tube_od_m": 0.035,
+    "arm_tube_wall_m": 0.0015,
+    "hub_radius_m": 0.12
+  },
+  "cruise_speed_m_s": 15,
+  "components": [
+    {
+      "instance": "arm0",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "arm1",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "arm2",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "arm3",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "arm4",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "arm5",
+      "ref": "tube:easy-composites-easy-composites-35mm-roll-wrapped-carbon-fib",
+      "category": "tube",
+      "mass_kg": 0.1832,
+      "source_url": "https://www.easycomposites.co.uk/35mm-roll-wrapped-carbon-fibre-tube-metric"
+    },
+    {
+      "instance": "mount0",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "mount1",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "mount2",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "mount3",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "mount4",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "mount5",
+      "ref": "part:motor_mount_alu35",
+      "category": "sur mesure (mount)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.0372,
+      "part_hash": "a4834e1c08"
+    },
+    {
+      "instance": "m0",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "m1",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "m2",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "m3",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "m4",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "m5",
+      "ref": "motor:t-motor-t-motor-mn1118-kv90-continu-80",
+      "category": "motor",
+      "mass_kg": 1.17,
+      "source_url": "https://store.tmotor.com/product/mn1118-multirotor-uav-motor.html"
+    },
+    {
+      "instance": "p0",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "p1",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "p2",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "p3",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "p4",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "p5",
+      "ref": "propeller:t-motor-t-motor-vz40x16-1",
+      "category": "propeller",
+      "mass_kg": 0.5,
+      "source_url": "https://store.tmotor.com/product/vz40-16-1-carbon-fiber-vtol-propeller.html"
+    },
+    {
+      "instance": "esc0",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "esc1",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "esc2",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "esc3",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "esc4",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "esc5",
+      "ref": "esc:t-motor-t-motor-v200a-14s-foc-esc",
+      "category": "esc",
+      "mass_kg": 0.47,
+      "source_url": "https://store.tmotor.com/product/v200a-14s-bldc-foc-drone-esc.html"
+    },
+    {
+      "instance": "bat",
+      "ref": "battery:tattu-gens-ace-tattu-pro-22000mah-14s-25c-51-8v",
+      "category": "battery",
+      "mass_kg": 7.35,
+      "source_url": "https://genstattu.com/tattu-pro-22000mah-51-8v-25c-14s-1p-lipo-smart-battery-pack-with-as150u-f-plug/"
+    },
+    {
+      "instance": "av",
+      "ref": "avionics:holybro-holybro-pixhawk-6x-autopilot-standard-set",
+      "category": "avionics",
+      "mass_kg": 0.104,
+      "source_url": "https://holybro.com/products/pixhawk-6x"
+    },
+    {
+      "instance": "gps",
+      "ref": "avionics:holybro-holybro-m9n-gps",
+      "category": "avionics",
+      "mass_kg": 0.032,
+      "source_url": "https://holybro.com/products/m9n-gps"
+    },
+    {
+      "instance": "pdb",
+      "ref": "avionics:holybro-holybro-power-distribution-board-300a-top-entry",
+      "category": "avionics",
+      "mass_kg": 0.27,
+      "source_url": "https://holybro.com/products/power-distribution-board-pdb-300a-top-entry"
+    },
+    {
+      "instance": "cables",
+      "ref": "wiring:powerstream-awg-reference-8-awg-silicone-insulated-wire-moto",
+      "category": "wiring",
+      "mass_kg": 0.735,
+      "source_url": "https://www.powerstream.com/Wire_Size.htm"
+    },
+    {
+      "instance": "hub",
+      "ref": "part:hub_hexa_alu",
+      "category": "sur mesure (frame)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 0.8215,
+      "part_hash": "cf7261bd8c"
+    },
+    {
+      "instance": "gear",
+      "ref": "part:landing_gear_alu",
+      "category": "sur mesure (gear)",
+      "material": "AL6061-T6",
+      "process": "cnc",
+      "mass_kg": 1.0157,
+      "part_hash": "d8f07e0361"
+    }
+  ],
+  "compiled_by": "assembly_compiler",
+  "xml_sha1": "015241dcd08007e57e0ae85419f09ddb21e4586e",
+  "assembly_sha1": "a1b8cce06ff0bb5af885f54ca3519686bdcef582"
+}

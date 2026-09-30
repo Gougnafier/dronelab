@@ -1,0 +1,29 @@
+{
+  "exam_id": "exam-0135",
+  "design": "a1_hexa_mn1118_35mm",
+  "design_id": "a1_hexa_mn1118_35mm-54b939c5",
+  "cycle": 79,
+  "hypothesis": "Premier vol v3 de la chaîne complète (catalogue→pièces alu→assemblage compilé) : l'hexa 6×MN1118+VZ40+tube35 compilé doit réussir le parcours nominal à 49,9 kg (charge qualifiante), donnant le premier ratio positif v3.",
+  "ok": true,
+  "exam_version": 3,
+  "passed": false,
+  "failure": {
+    "reason": "dossier refusé",
+    "details": [
+      "MJCF invalide : Error: Error opening file 'runs/lift_challenge/workspace/parts/motor_mount_alu35/part.stl'"
+    ]
+  },
+  "check": {
+    "ok": false,
+    "issues": [
+      "MJCF invalide : Error: Error opening file 'runs/lift_challenge/workspace/parts/motor_mount_alu35/part.stl'"
+    ],
+    "warnings": [],
+    "near_limits": []
+  },
+  "score": -2.0,
+  "payload_kg": 49.895,
+  "payload_requested_kg": 49.9,
+  "aircraft_mass_kg": null,
+  "ran_on": "rtx5090"
+}

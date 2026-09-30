@@ -1,0 +1,21 @@
+{
+  "material": "AL6061-T6",
+  "process": "cnc",
+  "role": "gear",
+  "interfaces": [],
+  "load_cases": [
+    {
+      "name": "atterrissage",
+      "fixed_box_mm": [-135, -135, -3, 135, 135, 3],
+      "load_box_mm": [78, 78, -144, 107, 107, -138],
+      "force_n": [0, 0, -400]
+    },
+    {
+      "name": "atterrissage_dur",
+      "fixed_box_mm": [-135, -135, -3, 135, 135, 3],
+      "load_box_mm": [78, -107, -144, 107, 107, -138],
+      "force_n": [0, 0, -2200]
+    }
+  ],
+  "heat": {"heat_w": 0}
+}

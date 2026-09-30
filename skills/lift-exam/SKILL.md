@@ -55,6 +55,10 @@ Un dossier d'épreuve se produit avec `assembly_compile` (compétence assembly-d
 
 Calcule les ordres de grandeur toi-même avant d'essayer : puissance de sustentation idéale P = T^1,5 / √(2ρA), temps de mission, énergie nécessaire. Un essai doit tester une hypothèse chiffrée, pas deviner.
 
+## Si une hypothèse de l'épreuve te semble fausse
+
+Tu ne la modifies pas et tu ne la contournes pas. Signale-la avec `report_exam_limitation` (hypothèse visée, preuve chiffrée, URL, suggestion) ; l'équipe décide. Continue ensuite avec l'épreuve telle qu'elle est, et mentionne dans le cahier les résultats qui en dépendent.
+
 ## Trouver la charge maximale
 
 Le score récompense la charge. Une fois un parcours réussi, augmente la charge par pas (2,5 lb minimum) ou par dichotomie pour trouver la limite, et note ce qui casse en premier.

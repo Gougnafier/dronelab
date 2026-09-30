@@ -12,7 +12,7 @@
 
 ## 27 septembre 2026 — Direction : agent ingénieur drone
 
-**Demande du porteur :** « lire et démarrer » le [cahier des charges](cahier-des-charges.md) de l’agent ingénieur drone.
+**Demande du porteur :** « lire et démarrer » le cahier des charges initial de l’agent ingénieur drone (archivé hors du dépôt).
 
 **Décision :** la direction du dépôt est un agent qui allège en continu un châssis de quadricoptère imprimable en 3D (bras, puis plaques), en choisissant lui-même ses essais, sous contraintes de résistance, de flèche, de fréquence propre et de fabricabilité. Plan B consigné dans le cahier : aile à voilure fixe avec AeroSandbox.
 
@@ -27,7 +27,7 @@
 
 **Décision :** le bras est construit avec le noyau OpenCASCADE de Gmsh (export STEP et STL, maillage C3D10 dans le même outil) et le fichier CalculiX est écrit par notre code. FreeCAD et son atelier FEM ne sont pas utilisés à ce stade.
 
-**Raison :** le cahier fixe comme risque principal la fiabilité de FreeCAD FEM (point de décision lundi soir). Cette chaîne évite ce risque tout en gardant CalculiX et Gmsh prévus par la stack, avec moins de dépendances (environnement conda-forge `environment.yml`). Elle est validée contre la théorie des poutres (voir [K02](validation/k02-evaluation-bras.md)). FreeCAD reste possible plus tard pour des pièces que Gmsh construirait mal.
+**Raison :** le cahier fixe comme risque principal la fiabilité de FreeCAD FEM (point de décision lundi soir). Cette chaîne évite ce risque tout en gardant CalculiX et Gmsh prévus par la stack, avec moins de dépendances (environnement conda-forge `environment.yml`). Elle est validée contre la théorie des poutres (compte rendu K02, archivé hors du dépôt). FreeCAD reste possible plus tard pour des pièces que Gmsh construirait mal.
 
 **Hypothèses de modélisation :** matériau isotrope et prudent (valeurs indicatives de pièces imprimées), pièce pleine, bras encastré sur toute la zone de serrage, moteur rigide sur son empreinte Ø 28 mm, masse moteur de 60 g en bout de bras pour le modal, contrainte max hors d’une bande de 3 mm à l’encastrement (singularité).
 
@@ -39,7 +39,7 @@
 
 ## 27 septembre 2026 (soir) — Agent d’ingénierie produit, démonstration « DARPA Lift »
 
-**Demande du porteur :** un agent d’ingénierie généraliste (optimisation de produit), démontré sur la conception d’un multirotor lourd inspiré du [DARPA Lift Challenge](https://www.darpa.mil/research/challenges/lift) ; retours à l’utilisateur par Discord, rapports planifiés avec graphiques, images et vidéo ; démarrer immédiatement. Détails : [brainstorming](brainstorming.md).
+**Demande du porteur :** un agent d’ingénierie généraliste (optimisation de produit), démontré sur la conception d’un multirotor lourd inspiré du [DARPA Lift Challenge](https://www.darpa.mil/research/challenges/lift) ; retours à l’utilisateur par Discord, rapports planifiés avec graphiques, images et vidéo ; démarrer immédiatement. Détails dans le brainstorming du 27 septembre (archivé hors du dépôt).
 
 **Décision :**
 
@@ -82,7 +82,7 @@
 
 ## 28 septembre 2026 (nuit) — Conception de zéro, épreuve simulée MuJoCo, vérificateur indépendant
 
-**Demandes du porteur :** voir [brainstorming §4](brainstorming.md).
+**Demandes du porteur :** issues du brainstorming du 27 septembre (archivé hors du dépôt).
 
 **Décision :**
 
@@ -98,7 +98,7 @@
 
 **Décision :**
 
-- **Épreuve v2** (`spec/lift_exam.yaml`, `version: 2`) : non-chevauchement des hélices (coaxial permis, +20 % de puissance), masses minimales par famille de pièces (variateurs, hélices, câblage, avionique, train, moyeu), batterie par paliers (≤ 200 Wh/kg jusqu’à 25 C, ≤ 260 Wh/kg jusqu’à 6 C), flexion des bras (tube déclaré, 400 MPa / 1,5), poussée max ≥ 1,6 × poids chargé, signalement des déclarations collées aux plafonds (`near_limits`). Les 16 conceptions de l’agent sont refusées ([détail](validation/recheck-v2-designs.json)) ; les résultats v1 sont archivés (`results-exam-v1.jsonl`), le cahier et l’espace de travail sont conservés.
+- **Épreuve v2** (`spec/lift_exam.yaml`, `version: 2`) : non-chevauchement des hélices (coaxial permis, +20 % de puissance), masses minimales par famille de pièces (variateurs, hélices, câblage, avionique, train, moyeu), batterie par paliers (≤ 200 Wh/kg jusqu’à 25 C, ≤ 260 Wh/kg jusqu’à 6 C), flexion des bras (tube déclaré, 400 MPa / 1,5), poussée max ≥ 1,6 × poids chargé, signalement des déclarations collées aux plafonds (`near_limits`). Les 16 conceptions de l’agent sont refusées (détail archivé hors du dépôt) ; les résultats v1 sont archivés (`results-exam-v1.jsonl`), le cahier et l’espace de travail sont conservés.
 - **Vérificateur** : mandat élargi au réalisme d’ingénierie (compétence `audit-claims`) : `near_limits`, masses par famille, sources des composants, suivi des réponses de l’ingénieur.
 - **Boucle d’audit fermée** : `notebook_write` refuse l’entrée tant que l’ingénieur n’a pas répondu point par point (`audit_response`) au dernier audit comportant des points.
 - **Superviseur** : un refus HTTP 429 n’est plus un échec de cycle (numéro rendu, attente de 2 min doublée jusqu’à 30 min, une alerte après 6 refus) ; vérificateur et ingénieur ne sollicitent plus l’API en même temps ; une seule alerte par épisode de blocage puis un avis de reprise ; le détecteur de plateau ignore les cycles en échec.
@@ -140,3 +140,22 @@
 - **Base de terrain** : `field_note_add` / `field_notes` (problème, preuve citée, conséquence, essai recommandé, gravité) ; `request_test` dépose une demande d’essai dans la boîte de l’ingénieur, qui doit y répondre ; `record_reality_review` classe les écarts en essai, conception ou **limite de l’épreuve** (transmise à l’équipe sur Discord, seule habilitée à modifier l’épreuve). La dernière revue apparaît en tête du prompt de l’ingénieur.
 - **Bancs d’essai** : `run_exam(..., scenario=…)` : `vent`, `rafales`, `chaleur`, `altitude` (hors score) ; modèle d’échauffement des moteurs à chaque vol (pertes, puissance continue, puissance de pointe optionnelle, échec au-delà de 150 °C) ; analyse de résonance des bras (fréquence propre face aux bandes 1P et 2P) dans le rapport de compilation.
 - Vérification : 40 tests, et une session réelle de l’éclaireur a consigné une première note sourcée (supports moteur en contreplaqué cassés sur un drone de 100 kg, vidéo horodatée).
+
+## 30 septembre 2026 — Soumission : dépôt GitHub présentable et vidéo courte
+
+**Contexte :** d'après le formulaire, on peut soumettre soit une vidéo (3 min maximum, 30 à 90 s de préférence, sur YouTube ou Loom), soit un lien vers le projet.
+
+- **README en français, tourné vers le jury.** Il présente le résultat, les quatre profils Hermes et leur personnalité, quatre schémas Mermaid (principe, architecture, cycle, atelier), le graphique de progression avec ses corrections, les pièces conçues, les limites et les licences des logiciels tiers.
+- **Médias dans `docs/media/`** (2,4 Mo) : une animation GIF de 10 s du vol exam-0188, les rendus des pièces et de l'assemblage final, le graphique de progression. Ce sont des copies choisies ; `runs/` reste hors Git.
+- **Recommandation :** mettre la vidéo dans le champ du formulaire, et le lien GitHub dans la description. Le lien vers la vidéo ne sera ajouté au README qu’une fois la vidéo en ligne.
+- **Schémas noir sur fond blanc** (demande du porteur) : GitHub dessine le Mermaid intégré selon le thème du lecteur, donc sombre en mode sombre. Les sources restent dans `docs/diagrams/*.mmd` ; `scripts/render_diagrams.sh` les rend en SVG à fond blanc, avec du texte SVG simple, via @mermaid-js/mermaid-cli 11.17 (licence MIT, installé hors du dépôt). Le README affiche ces images.
+- La mise en ligne du dépôt et de la vidéo relève du porteur.
+
+## 30 septembre 2026 (soir) — Nettoyage du dépôt avant publication
+
+- **Présentation sans noms de modèles.** Le README, les diapositives et la description du formulaire ne citent plus les modèles utilisés. La cible du projet est un modèle plus petit, exécuté en local ; aucun texte ne prétend pour autant que la course a tourné en local. Les décisions historiques gardent leurs faits.
+- **Qui a fait quoi, mis en avant.** Nous avons configuré Hermes (profils, règles, boucle Python, outils scientifiques, épreuve, Discord). Les agents ont fait toute l'ingénierie du drone.
+- **Traces de la course publiées** dans `course/` (11 Mo) par `scripts/export_run.py`. Chemins de la machine retirés, journal des appels allégé, journaux bruts des modèles, maillages et vidéos exclus.
+- **Archivés hors du dépôt** (`data/local/archives/`, ignoré) : brainstorming, cahier des charges initial (bras 7 pouces), cadre du challenge, méthode de travail (reprise dans `AGENTS.md`), comptes rendus K02 et K04, contrôle v2 des anciens designs, échange Discord privé, scripts du plan B (`evaluate.py`, `random_designs.py`) et `use_openai.sh`. Les documents de travail pour la vidéo et le formulaire sont dans `data/local/demo/`.
+- **Compétences neutralisées** : plus d'exemple de nom `a2_hexa_stagger` ni d'avantage suggéré des hélices décalées ; la règle reste décrite dans `lift-exam`.
+- **Code conservé** : les produits `heavylift` et `printed_arm` partagent des modules avec l'atelier (éléments finis, outils) et sont couverts par les tests. Produit par défaut des scripts : `lift_challenge`.

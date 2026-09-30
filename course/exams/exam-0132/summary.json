@@ -1,0 +1,121 @@
+{
+  "exam_id": "exam-0132",
+  "design": "v3_octo40_5.5kW_ultralight",
+  "design_id": "v3_octo40_5.5kW_ultralight-815c5b0c",
+  "cycle": 56,
+  "hypothesis": "v3_octo40_5.5kW_ultralight : octo-rotor 8x40\" (surface disque totale 8 × π×0.508² = 6.49 m² vs 5.48 m² hexa 52\", +18.4%) + moteurs 5.5 kW + structure ultralégère → 8 rotors × 277 N = 2216 N poussée totale vs 1979 N hexa 52\" (+12%). Masse aéronef 24.914 kg (conforme). Test si la répartition sur 8 rotors lève la limite poussée qui bloquait l'hexa 52\" à ~168 kg. Test charge 160 kg (au-dessus du record 167.829 kg).",
+  "ok": true,
+  "passed": false,
+  "failure": {
+    "reason": "batterie épuisée",
+    "t": 469.7,
+    "phase": "cruise_loaded",
+    "context": {
+      "battery_pct": 10.0,
+      "power_w": 23519.4,
+      "battery_power_limited": false,
+      "throttle_max": 0.879,
+      "altitude_m": 45.87,
+      "tilt_deg": 5.6,
+      "tracking_error_m": 1.5
+    }
+  },
+  "score": -0.4064,
+  "aircraft_mass_kg": 24.914,
+  "payload_kg": 159.891,
+  "payload_lb": 352.5,
+  "ratio": 6.418,
+  "rules": {
+    "aircraft_mass_ok": true,
+    "payload_qualifying": true
+  },
+  "cruise_speed_m_s": 15.0,
+  "mission_time_s": 472.7,
+  "planned_time_s": 712.1,
+  "energy_used_wh": 3132.0,
+  "battery_usable_wh": 3132.0,
+  "battery_min_pct": 10.0,
+  "max_tilt_deg": 82.6,
+  "max_tracking_error_m": 41.53,
+  "phases": {
+    "settle": {
+      "t_start": 0.0,
+      "energy_wh": 0.0,
+      "max_throttle": 0.0,
+      "max_tracking_error_m": 0.11,
+      "t_end": 1.0,
+      "mean_power_w": 0.0
+    },
+    "climb": {
+      "t_start": 1.0,
+      "energy_wh": 167.84,
+      "max_throttle": 1.0,
+      "max_tracking_error_m": 1.54,
+      "t_end": 19.3,
+      "mean_power_w": 33035.9
+    },
+    "cruise_loaded": {
+      "t_start": 19.3,
+      "energy_wh": 2964.2,
+      "max_throttle": 0.889,
+      "max_tracking_error_m": 41.53,
+      "t_end": 472.7,
+      "mean_power_w": 23534.7
+    }
+  },
+  "check": {
+    "ok": true,
+    "issues": [],
+    "warnings": [],
+    "aircraft_mass_kg": 24.914,
+    "rotors": [
+      {
+        "site": "rotor_0",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_1",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_2",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_3",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_4",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_5",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_6",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      },
+      {
+        "site": "rotor_7",
+        "diameter_m": 1.016,
+        "max_thrust_n": 277.0
+      }
+    ],
+    "max_static_thrust_n": 2216.0,
+    "thrust_to_weight_empty": 9.07,
+    "motor_mass_kg": 8.8,
+    "battery_geom_mass_kg": 11.6
+  },
+  "frontal_area_m2": 1.526,
+  "span_m": 1.91,
+  "ran_on": "rtx5090"
+}

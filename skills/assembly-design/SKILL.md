@@ -34,7 +34,7 @@ Le squelette est **ta** conception : topologie, nombre de bras, hauteurs, où va
 ## Idées de squelette à évaluer (avec des chiffres)
 
 - Nombre de rotors et diamètre : surface de disque contre masse de moteurs et de bras.
-- **Hélices décalées en hauteur** (une sur deux surélevée d'au moins 10 % du diamètre) pour rapprocher les rotors : bras plus courts, mais pénalité de puissance selon la surface recouverte (`power_factor` de chaque rotor dans le rapport de compilation). Le coaxial est le cas extrême.
+- **Recouvrement des hélices** : la règle de l'épreuve (écart vertical minimal, pénalité de puissance selon la surface recouverte) est décrite dans la compétence `lift-exam` ; le rapport de compilation donne le `power_factor` de chaque rotor.
 - Bras : tube acheté (catalogue) + manchons usinés ou imprimés ; longueur minimale imposée par les hélices.
 - Où mettre la batterie et la charge : sous le centre, centre de gravité sous le plan des rotors.
 

@@ -13,7 +13,7 @@ from pathlib import Path
 
 from ..spec import REPO_ROOT
 from ..store import append_jsonl, now_iso, read_jsonl
-from .exam import check_package, exam_spec, load_package
+from .exam import check_package, exam_spec, load_assets, load_package
 
 
 def workspace_dir(root: Path) -> Path:
@@ -39,7 +39,7 @@ def design_fingerprint(drone_xml: str, design: dict) -> str:
 def check_design(root: Path, design_dir: str) -> dict:
     path = resolve_design(root, design_dir)
     xml, design = load_package(path)
-    return {"ok": True, "design_dir": str(path), **check_package(xml, design)}
+    return {"ok": True, "design_dir": str(path), **check_package(xml, design, assets=load_assets(path))}
 
 
 def run_exam(root: Path, design_dir: str, payload_kg: float, cruise_speed_m_s: float | None, cycle: int,
@@ -57,8 +57,14 @@ def run_exam(root: Path, design_dir: str, payload_kg: float, cruise_speed_m_s: f
     folder.mkdir()
     shutil.copy(path / "drone.xml", folder / "drone.xml")
     shutil.copy(path / "design.json", folder / "design.json")
+    if (path / "meshes").exists():  # maillages des pièces sur mesure : pour la vidéo rejouée ici
+        shutil.copytree(path / "meshes", folder / "meshes")
+    import base64
+
+    assets = {name: base64.b64encode(data).decode("ascii") for name, data in load_assets(path).items()}
     result = run_module("drone_agent.lift.exam", {"drone_xml": xml, "design": design, "payload_kg": payload_kg,
-                                                  "cruise_speed_m_s": cruise_speed_m_s, "scenario": scenario}, timeout_s=1500)
+                                                  "cruise_speed_m_s": cruise_speed_m_s, "scenario": scenario,
+                                                  "assets": assets}, timeout_s=1500)
     if not result.get("ok"):
         (folder / "summary.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))
         return {"ok": False, "exam_id": exam_id, "reason": result.get("reason"), "ran_on": result.get("ran_on")}
