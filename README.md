@@ -1,6 +1,6 @@
 # Dronelab : des agents IA conçoivent seuls un drone de levage lourd
 
-**NVIDIA Paris Claw Agent Challenge 2026** · construit sur [Hermes Agent](https://github.com/NousResearch/hermes-agent) · simulation sur RTX 5090
+**NVIDIA Paris Claw Agent Challenge 2026** · construit sur [Hermes Agent](https://github.com/NousResearch/hermes-agent) · simulation physique MuJoCo · export OpenUSD
 
 <p align="center"><img src="docs/media/flight.gif" width="560" alt="L'hexacoptère conçu par l'agent décolle avec sa charge dans le parcours DARPA Lift simulé"></p>
 
@@ -120,7 +120,7 @@ Chaque profil peut tourner sur un modèle différent. Le vérificateur utilise v
 
 ### Architecture
 
-<p align="center"><img src="docs/media/diagram-architecture.svg" alt="Architecture : superviseur, quatre profils Hermes, serveur d'outils MCP, atelier, RTX 5090 et Discord"></p>
+<p align="center"><img src="docs/media/diagram-architecture.svg" alt="Architecture : superviseur, quatre profils Hermes, serveur d'outils MCP, atelier, simulation et Discord"></p>
 
 Le superviseur est la partie qui ne dépend pas du modèle :
 
@@ -138,6 +138,15 @@ Le superviseur est la partie qui ne dépend pas du modèle :
 ### L'atelier : rien n'est déclaré, tout est construit
 
 <p align="center"><img src="docs/media/diagram-atelier.svg" alt="L'atelier : catalogue sourcé, pièces CAO, éléments finis, assemblage compilé, vol"></p>
+
+### Pourquoi MuJoCo, et la suite avec Isaac Lab
+
+La physique de l'épreuve utilise [MuJoCo](https://github.com/google-deepmind/mujoco), pour deux raisons.
+
+1. **L'outil est appelé par un agent, des centaines de fois.** Chaque vol doit démarrer instantanément, sans interface, et renvoyer un résultat lisible (verdict, télémétrie). MuJoCo est une simple bibliothèque Python.
+2. **Ce qui décide du score n'est pas le moteur physique.** Poussée, puissance, énergie de la batterie et traînée viennent du modèle de l'épreuve, écrit et figé à part.
+
+La suite reste compatible avec l'écosystème NVIDIA. Les modèles de l'agent servent tels quels à [MuJoCo Warp](https://github.com/google-deepmind/mujoco_warp), que NVIDIA et DeepMind développent ensemble. MuJoCo Warp est le solveur principal de [Newton](https://github.com/newton-physics/newton), le moteur physique open source de NVIDIA, et [Isaac Lab](https://isaac-sim.github.io/IsaacLab/main/source/experimental-features/newton-physics-integration/index.html) peut l'utiliser directement. Chaque assemblage est aussi exporté en OpenUSD, le format d'Omniverse et d'Isaac Sim. La prochaine étape : faire voler à chaque cycle des centaines de variantes et de scénarios (vent, chaleur, altitude) en parallèle.
 
 ## Ce que l'agent a conçu
 
@@ -158,7 +167,9 @@ Le design final est un hexacoptère à hélices décalées en hauteur, une confi
 
 À chaque version, je n'ai jamais touché au drone de l'agent. J'ai changé les règles et les outils, puis l'agent a recommencé.
 
-| | v1 (28 sept., nuit et matin ; cycles 1 à 62) | v2 (28 sept., midi) | v3 (28 sept., fin d’après-midi ; cycles 74 à 109) |
+Ces versions se sont succédé vite parce que l'agent travaille jour et nuit. En v1, 134 vols lui ont suffi pour révéler les failles de l'épreuve. Chaque nouvelle version a ensuite été éprouvée par ses vols et par les audits avant d'être dépassée. Cette boucle courte entre essais, critique et correction est justement ce qu'un agent autonome apporte.
+
+| | v1 (cycles 1 à 62, 134 vols) | v2 (aucun vol) | v3 (cycles 74 à 109, 60 vols) |
 | --- | --- | --- | --- |
 | **Ce que l'agent fournit** | Un fichier de drone écrit à la main : masses, puissances et dimensions déclarées | Le même fichier, mieux contrôlé | Un assemblage de vraies pièces : catalogue sourcé et pièces dessinées en CAO. Les masses sont calculées, plus jamais déclarées |
 | **Ce que l'épreuve contrôle** | Le vol du parcours et la plausibilité de base | En plus : hélices sans chevauchement, masses minimales par famille de pièces, densité de batterie plafonnée selon la décharge, flexion des bras, poussée d'au moins 1,6 fois le poids | En plus : seules les conceptions compilées volent, fiches produit ouvertes et vérifiées, éléments finis sur chaque pièce, hélices décalées permises avec pénalité, bancs vent, chaleur et altitude, échauffement des moteurs, résonance des bras |
@@ -200,6 +211,7 @@ Je suivais le travail en direct sur mon téléphone. Ces messages sont écrits p
 - **Résultats à prendre avec des pincettes.** L'agent garde des incohérences. Il optimise au ras des plafonds de l'épreuve, il a déclaré la puissance moteur via une entrée de catalogue créée pour l'épreuve, et certaines masses sont estimées plutôt que sourcées. C'est un bon début, pas encore un ingénieur fiable.
 - **Pistes d'amélioration :**
   - plus de harnais et de contrôles automatiques ;
+  - une épreuve massivement parallèle (MuJoCo Warp, Newton, Isaac Lab) pour explorer des centaines de variantes par cycle ;
   - d'autres profils : un relecteur coût et fabrication, un relecteur sécurité et réglementation, un concepteur de bancs d'essai ;
   - des consignes de comportement plus précises dans les personnalités : ne pas s'arrêter au ras d'un plafond, sourcer chaque masse, savoir quand changer d'architecture ;
   - des bancs d'essai plus rigoureux, construits avec lui ;

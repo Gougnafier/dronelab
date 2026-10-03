@@ -37,7 +37,7 @@ L’examen est volontairement hors de portée de l’agent : un agent qui écrir
 flowchart LR
     USER(["Utilisateur"]) <-->|"questions, consignes"| DISCORD["Discord<br/>#drone-lab"]
 
-    subgraph DEV["Machine de développement"]
+    subgraph DEV["Laboratoire"]
         direction TB
         SUP["Superviseur Python<br/>boucle codée en dur"]
         subgraph HERMES["Hermes Agent · 4 profils"]
@@ -49,7 +49,7 @@ flowchart LR
         end
         MCP["Serveur d'outils MCP<br/>engineer · auditor · desk"]
         FILES[("runs/lift_challenge<br/>cahier, résultats,<br/>épreuves, espace de travail")]
-        RENDER["Rendu vidéo<br/>MuJoCo + EGL"]
+        RENDER["Rendu vidéo<br/>rejeu de la trajectoire"]
         SUP -->|"lance chaque cycle"| ENG
         SUP -->|"lance l'audit"| AUD
         SUP -->|"tous les 3 cycles"| SCOUT
@@ -58,7 +58,7 @@ flowchart LR
         MCP --> RENDER --> FILES
     end
 
-    subgraph GPU["RTX 5090 · WSL2"]
+    subgraph CALC["Simulation"]
         SIM["Épreuve simulée<br/>MuJoCo"]
         FEM["Éléments finis<br/>CalculiX"]
     end
@@ -67,7 +67,7 @@ flowchart LR
 
     DISCORD <--> DESK
     SUP -->|"records, alertes,<br/>rapports"| DISCORD
-    MCP <-->|"SSH : dossier →<br/>télémétrie + trajectoire"| SIM
+    MCP <-->|"dossier →<br/>télémétrie + trajectoire"| SIM
     HERMES -.->|"inférence"| LLM
 ```
 
@@ -163,7 +163,7 @@ Séparation des pouvoirs : l’ingénieur ne peut pas valider ses propres propos
 | Comprendre | `brief` | Objectif, règles, physique de l’épreuve, garde-fous, format du dossier de conception, chemins de l’espace de travail |
 | Concevoir | `materials_info`, `catalog_add`, `catalog_search`, `part_build`, `part_fem`, `assembly_compile` | Matériaux et procédés, catalogue sourcé, pièces sur mesure (CAO, fabrication, thermique, éléments finis), compilation du squelette en dossier d’épreuve |
 | Essayer | `check_design` | Contrôle rapide d’un dossier (format, masses, poussée max par rotor, plausibilité), sans vol |
-| | `run_exam` | Fait voler le drone sur le parcours complet (sur la 5090) ; verdict, statistiques par phase, vidéo pour l’utilisateur |
+| | `run_exam` | Fait voler le drone sur le parcours complet ; verdict, statistiques par phase, vidéo pour l’utilisateur |
 | | `exam_telemetry` | Séries temporelles d’un vol (position, vitesses, inclinaison, poussée, puissance, batterie, etc.) pour comprendre un échec |
 | | `exam_list` | Historique des vols |
 | Se souvenir | `notebook_write`, `notebook_read`, `notebook_summary_write` | Cahier de labo (une entrée obligatoire par cycle) et résumé |
@@ -196,7 +196,7 @@ flowchart LR
     PKG["Dossier de l'agent<br/>drone.xml + design.json"] --> CHECK{"Garde-fous<br/>format, masses,<br/>plausibilité"}
     CHECK -->|"refusé"| REFUSED["Score -2<br/>liste des problèmes"]
     CHECK -->|"accepté"| BUILD["Modèle complet<br/>sol, charge soudée,<br/>rotors, batterie"]
-    BUILD --> FLY["Vol simulé<br/>pilote et physique imposés<br/>RTX 5090"]
+    BUILD --> FLY["Vol simulé<br/>pilote et physique imposés"]
     FLY --> OUT1["Résumé + score"]
     FLY --> OUT2["Télémétrie 10 Hz<br/>POUR L'AGENT"]
     FLY --> OUT3["Trajectoire 5 Hz"]
@@ -222,7 +222,7 @@ stateDiagram-v2
     échec --> [*] : score entre -1 et -0,1
 ```
 
-Le vol est calculé sur la RTX 5090 par SSH (quelques dizaines de secondes pour le parcours complet) ; la vidéo est produite sur la machine de développement, car le rendu OpenGL échoue dans WSL.
+Le vol du parcours complet se calcule en quelques dizaines de secondes. La vidéo est produite à part, en rejouant exactement la trajectoire calculée.
 
 ### 4 bis. L’atelier de conception (épreuve v3)
 
@@ -236,7 +236,7 @@ flowchart LR
     end
     subgraph ATELIER["Pièces sur mesure"]
         SCRIPT["part.py (CAO, mm)<br/>part.json (matériau, procédé,<br/>interfaces, cas de charge, chaleur)"] --> BUILD["part_build<br/>masse, fabrication,<br/>thermique, image"]
-        BUILD --> FEM["part_fem<br/>éléments finis<br/>RTX 5090"]
+        BUILD --> FEM["part_fem<br/>éléments finis"]
         FEM -->|"FS < 1,5"| SCRIPT
     end
     CAT --> ASM["assembly.json<br/>squelette écrit par l'agent"]
@@ -296,7 +296,7 @@ Fichiers Markdown dans `skills/`, liés dans les profils Hermes et chargés à c
 | Produit | Statut | Évaluation |
 | --- | --- | --- |
 | `lift_challenge` | **Démonstration actuelle** | Conception de zéro, épreuve simulée MuJoCo |
-| `heavylift` | Conservé | Modèle analytique de dimensionnement (théorie de la quantité de mouvement, énergie de mission, bras en tube) + vérification des bras par éléments finis sur la 5090 |
+| `heavylift` | Conservé | Modèle analytique de dimensionnement (théorie de la quantité de mouvement, énergie de mission, bras en tube) + vérification des bras par éléments finis |
 | `printed_arm` | Plan B du cahier des charges initial | Bras imprimé 7 pouces, Gmsh + CalculiX (statique et modal) |
 
 ## Le déroulé
@@ -310,7 +310,7 @@ sequenceDiagram
     participant I as Ingénieur (Hermes dronelab)
     participant W as Web et espace de travail
     participant O as Outils MCP
-    participant G as RTX 5090
+    participant G as Simulation
     participant V as Vérificateur (Hermes dronecheck)
     participant U as Discord
     S->>I: contexte neuf : objectif, audits, résumé, 5 meilleurs, consignes
@@ -322,7 +322,7 @@ sequenceDiagram
     I->>O: check_design(vN)
     O-->>I: masses, poussée max, garde-fous
     I->>O: run_exam(vN, charge, hypothèse)
-    O->>G: vol simulé (SSH)
+    O->>G: vol simulé
     G-->>O: résumé, télémétrie, trajectoire
     O-->>I: verdict, stats par phase (vidéo produite pour l'humain)
     I->>O: exam_telemetry(fenêtre avant l'échec)
@@ -421,25 +421,18 @@ flowchart LR
 | `llm/` | Sortie de chaque session (cycles, audits, rapports) |
 | `workspace/` | Tout ce que l’agent a écrit : scripts, conceptions, téléchargements |
 
-## Machines et services
+## Lancement
 
-| Élément | Où | Commande |
-| --- | --- | --- |
-| Superviseur + ingénieur + vérificateur | Machine de développement | `systemctl --user status dronelab-agent` ; arrêt propre : `touch runs/lift_challenge/STOP` |
-| Passerelle Discord | Machine de développement | `systemctl --user status hermes-gateway-dronedesk` |
-| Épreuve simulée, éléments finis | RTX 5090 (WSL2), `~/drone-agent/` | code synchronisé par `scripts/sync_5090.sh` |
-| Modèles de langage | fournisseur configuré dans chaque profil Hermes | clé dans les `.env` des profils, hors dépôt |
-
-Lancement :
+Le superviseur et la passerelle Discord tournent en services. La clé du modèle de langage est rangée dans le `.env` de chaque profil Hermes, hors dépôt. Arrêt propre : `touch runs/lift_challenge/STOP`.
 
 ```bash
 python scripts/run_agent.py --product lift_challenge --hermes-cmd dronelab --auditor-cmd dronecheck \
-  --notify discord:<id du salon> --report --max-turns 90 --cycle-timeout 2700
+  --scout-cmd dronescout --notify discord:<id du salon> --report
 ```
 
 ## Ce qui est vérifié, ce qui ne l’est pas
 
-**Vérifié** : 42 tests sans modèle de langage (`python -m pytest -q`) : épreuve (vol réussi, épuisement de batterie, refus d’un dossier invalide ou d’une déclaration implausible), outils du vérificateur, superviseur (échec sans cahier, alerte, reprise après redémarrage, rétrospective au plateau, consignes, validation des propositions, rapports), modèles analytiques comparés à la théorie des poutres, calcul par éléments finis des bras comparé au modèle analytique (écarts < 1 %). Chaîne complète vérifiée : vol sur la 5090, vidéo, télémétrie, notification Discord.
+**Vérifié** : 42 tests sans modèle de langage (`python -m pytest -q`) : épreuve (vol réussi, épuisement de batterie, refus d’un dossier invalide ou d’une déclaration implausible), outils du vérificateur, superviseur (échec sans cahier, alerte, reprise après redémarrage, rétrospective au plateau, consignes, validation des propositions, rapports), modèles analytiques comparés à la théorie des poutres, calcul par éléments finis des bras comparé au modèle analytique (écarts < 1 %). Chaîne complète vérifiée : vol simulé, vidéo, télémétrie, notification Discord.
 
 **Leçon de l’audit du 28 septembre** : sur l’épreuve v1, l’agent a atteint 6,73:1 en exploitant ce que l’épreuve ne contrôlait pas (hélices qui se chevauchent, pièces manquantes, masses calées sur les plafonds). La v2 ferme ces failles ; toute règle absente de l’épreuve reste une faille potentielle, d’où le volet « réalisme » du vérificateur.
 

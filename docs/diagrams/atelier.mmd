@@ -3,6 +3,6 @@ flowchart LR
     CAD["Script CAO<br/>(Gmsh, mm)"] -->|"part_build<br/>matériau + procédé"| PART["Pièce sur mesure<br/>masse, thermique"]
     PART -->|"part_fem<br/>cas de charge"| FEMR["Facteurs de sécurité"]
     CAT & PART --> ASM["assembly.json"] -->|"assembly_compile<br/>interfaces, masses, résonance"| DESIGN["Dossier signé<br/>MJCF + OpenUSD"]
-    DESIGN -->|"run_exam"| FLIGHT["Vol sur la 5090"]
+    DESIGN -->|"run_exam"| FLIGHT["Vol simulé"]
     FLIGHT --> TEL["Télémétrie pour l'agent"]
     FLIGHT --> VID["Vidéo pour les humains"]

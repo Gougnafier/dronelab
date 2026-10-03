@@ -10,5 +10,5 @@ flowchart TB
     SCOUT -->|"demandes d'essai"| INBOX
     ENG & VER & SCOUT & DESK --> MCP["Serveur d'outils MCP<br/>outils filtrés par rôle,<br/>chaque appel journalisé"]
     MCP --> WORK["Atelier<br/>catalogue · CAO · assemblage"]
-    MCP -->|"SSH"| GPU["RTX 5090<br/>vol MuJoCo · éléments finis CalculiX"]
+    MCP --> SIM["Simulation<br/>vol MuJoCo · éléments finis CalculiX"]
     MCP <--> RUN[("Fichiers de la course<br/>cahier, résultats, audits,<br/>notes de terrain, télémétrie")]

@@ -159,3 +159,10 @@
 - **Archivés hors du dépôt** (`data/local/archives/`, ignoré) : brainstorming, cahier des charges initial (bras 7 pouces), cadre du challenge, méthode de travail (reprise dans `AGENTS.md`), comptes rendus K02 et K04, contrôle v2 des anciens designs, échange Discord privé, scripts du plan B (`evaluate.py`, `random_designs.py`) et `use_openai.sh`. Les documents de travail pour la vidéo et le formulaire sont dans `data/local/demo/`.
 - **Compétences neutralisées** : plus d'exemple de nom `a2_hexa_stagger` ni d'avantage suggéré des hélices décalées ; la règle reste décrite dans `lift-exam`.
 - **Code conservé** : les produits `heavylift` et `printed_arm` partagent des modules avec l'atelier (éléments finis, outils) et sont couverts par les tests. Produit par défaut des scripts : `lift_challenge`.
+
+## 3 octobre 2026 — Présentation centrée sur le logiciel
+
+- Le README, les schémas et l'architecture décrivent le système au niveau logiciel, sans le matériel : la simulation et les éléments finis ont tourné sur processeur, et la carte graphique n'a pas été exploitée. La présenter aurait été trompeur.
+- Le choix de MuJoCo est justifié sur le plan logiciel : outil appelé des centaines de fois par un agent, score décidé par le modèle de l'épreuve et non par le moteur physique. La suite reste compatible avec l'écosystème NVIDIA (MuJoCo Warp, Newton, Isaac Lab, OpenUSD).
+- Les traces brutes de `course/` ne sont pas retouchées, même lorsqu'elles nomment la machine de calcul.
+- Ajout d'une comparaison avec des drones du commerce (fiches constructeurs) ; les dates des versions de l'épreuve sont retirées du tableau, remplacées par les cycles et le nombre de vols.
