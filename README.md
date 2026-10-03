@@ -67,6 +67,17 @@ Les chiffres ne se comparent pas directement : d'un côté des vols réels, de l
 - la mission imposait un multirotor, alors que le vainqueur est un hélicoptère classique, dont le grand rotor unique porte plus efficacement ;
 - l'agent ne pouvait utiliser que des pièces vendues sur catalogue.
 
+**Et face aux drones du commerce ?** Ils portent en général moins que leur propre poids. Ils sont conçus pour voler des centaines de fois, avec des marges de sécurité et une certification. C'est pour cela que la DARPA fixait un seuil de 2:1 et un objectif de 4:1 : le défi demandait de sortir de ce cadre.
+
+| Drone | Usage | Charge max | Masse avec batteries | Ratio |
+| --- | --- | --- | --- | --- |
+| [DJI FlyCart 30](https://www.dji.com/flycart-30/specs) | Livraison | 30 kg (16 km) | 65 kg | 0,46 |
+| [Freefly Alta X](https://freeflysystems.com/alta-x/specs) | Caméra, industrie | 15,1 kg | ≈ 19,8 kg (masse max au décollage moins la charge) | ≈ 0,76 |
+| [DJI Agras T50](https://ag.dji.com/t50/specs) | Épandage agricole, vols courts | 50 kg | 52 kg | 0,96 |
+| **Dronelab** (simulation) | Parcours DARPA : 7,4 km chargé, puis 1,9 km à vide | 56,7 kg | 24,6 kg | **2,30** |
+
+Ratios calculés d'après les fiches des constructeurs. La comparaison flatte le design de l'agent : les produits du commerce gardent des marges qu'un drone conçu pour un record n'a pas. La marge d'énergie de l'agent n'est que de 0,32 %.
+
 ## Comment ça fonctionne
 
 ### Sur quoi repose le projet
@@ -77,7 +88,7 @@ Je ne suis pas parti de rien. [Hermes Agent](https://github.com/NousResearch/her
 
 ### Qui fait les essais ?
 
-**L'épreuve officielle est figée** : le parcours DARPA et son score. Un agent qui pourrait la réécrire se noterait lui-même. S'il la juge fausse, il le signale, preuves à l'appui, et je décide ; c'est ainsi qu'un vrai bug a été corrigé le soir même.
+**L'épreuve officielle est figée** : le parcours DARPA et son score. Un agent qui pourrait la réécrire se noterait lui-même. S'il la juge fausse, il le signale, preuves à l'appui, sans pouvoir la modifier. Les agents ont ainsi relevé 7 défauts de l'épreuve, dont un vrai bug.
 
 **Tous les autres essais viennent des agents.**
 
@@ -92,7 +103,7 @@ Je ne suis pas parti de rien. [Hermes Agent](https://github.com/NousResearch/her
 - pour demander de vérifier la faisabilité physique du design de l'époque ;
 - pour demander aux agents de renforcer leurs propres compétences de vérification.
 
-Côté laboratoire, j'ai fait évoluer l'épreuve après l'audit (v2 puis v3), corrigé le bug signalé par l'agent et annoncé les nouveaux outils. La possibilité d'hélices décalées en hauteur vient de moi.
+Côté laboratoire, je me suis limité à durcir l'épreuve après l'audit (v2 puis v3), à corriger le bug signalé par l'agent et à annoncer les nouveaux outils, sans jamais donner de conseil de conception.
 
 ### Quatre profils Hermes, quatre personnalités
 
@@ -130,7 +141,7 @@ Le superviseur est la partie qui ne dépend pas du modèle :
 
 ## Ce que l'agent a conçu
 
-Le design final est un hexacoptère à hélices décalées en hauteur. Cette possibilité, c'est moi qui l'ai ouverte dans l'examen ; l'agent a choisi de l'utiliser et l'a dimensionnée. Il utilise des moteurs T-Motor MN1118, des hélices de 40 pouces, une batterie 14S 22 Ah et des tubes carbone de 30 mm. Les pièces en aluminium ci-dessous ont été dessinées et calculées par l'agent.
+Le design final est un hexacoptère à hélices décalées en hauteur, une configuration que les règles de l'épreuve autorisent ; l'agent a choisi de l'utiliser et l'a dimensionnée. Il utilise des moteurs T-Motor MN1118, des hélices de 40 pouces, une batterie 14S 22 Ah et des tubes carbone de 30 mm. Les pièces en aluminium ci-dessous ont été dessinées et calculées par l'agent.
 
 | Assemblage final | Support moteur | Moyeu | Train d'atterrissage | Largueur de charge |
 | --- | --- | --- | --- | --- |
@@ -189,6 +200,8 @@ Je suivais le travail en direct sur mon téléphone. Ces messages sont écrits p
 - **Résultats à prendre avec des pincettes.** L'agent garde des incohérences. Il optimise au ras des plafonds de l'épreuve, il a déclaré la puissance moteur via une entrée de catalogue créée pour l'épreuve, et certaines masses sont estimées plutôt que sourcées. C'est un bon début, pas encore un ingénieur fiable.
 - **Pistes d'amélioration :**
   - plus de harnais et de contrôles automatiques ;
+  - d'autres profils : un relecteur coût et fabrication, un relecteur sécurité et réglementation, un concepteur de bancs d'essai ;
+  - des consignes de comportement plus précises dans les personnalités : ne pas s'arrêter au ras d'un plafond, sourcer chaque masse, savoir quand changer d'architecture ;
   - des bancs d'essai plus rigoureux, construits avec lui ;
   - un retour humain plus fort au début, pour qu'il apprenne quoi vérifier ;
   - pour l'instant, un peu plus d'humain dans la boucle.
